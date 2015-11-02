@@ -1,0 +1,6 @@
+Hosting: GoDaddy
+Domain: haileyheld.com
+Features:
+    - Admin page
+    - Gallery
+    - About/Contact
