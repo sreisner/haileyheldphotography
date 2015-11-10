@@ -1,34 +1,63 @@
+body {
+    background-color: black;
+    font-family: 'Raleway', sans-serif;
+}
+
 #nav-bar {
-    background-color: red;
     height: 10%;
 }
 
 #logo {
-    background-color: black;
+    align-items: center;
+    color: #FFFFFF;
+    display: flex;
     float: left;
     height: 100%;
-    width: 30%;
+    justify-content: center;
+    width: 300px;
 }
 
 #link-section {
-    background-color: orange;
     display: flex;
     float: right;
     height: 100%;
-    justify-content: space-between;
-    width: 70%;
 }
 
-#links a {
-    padding: 50px;
+#site-links {
+    align-items: center;
+    display: flex;
+    float: left;
+    justify-content: center;
+    margin: 25px;
+}
+
+#site-links > a {
+    color: #FFFFFF;
+    padding: 15px;
+    text-decoration: none;
+}
+
+#site-links > a:hover {
+    background-color: red;
+}
+
+#social-links {
+    align-items: center;
+    display: flex;
+    float: right;
+    justify-content: center;
+}
+
+#social-links > a {
+    color: #FFFFFF;
+    padding: 5px;
+    text-decoration: none;
 }
 
 #gallery {
-    background-color: green;
     height: 75%;
 }
 
 #book-me-bar {
-    background-color: blue;
     height: 15%;
 }
