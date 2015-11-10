@@ -4,7 +4,12 @@ body {
 }
 
 #nav-bar {
-    height: 10%;
+    background-color: black;
+    height: 100px;
+    margin-top: -8px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
 }
 
 #logo {
@@ -46,6 +51,8 @@ body {
     display: flex;
     float: right;
     justify-content: center;
+    margin-left: 10px;
+    margin-right: 25px;
 }
 
 #social-links > a {
@@ -55,7 +62,7 @@ body {
 }
 
 #gallery {
-    height: 75%
+    padding-top: 100px;
     width: 100%;
     display: flex;
     align-contents: center;
@@ -63,13 +70,21 @@ body {
 }
 
 .gallery-col {
-    background-color: red;
-    height: 100%;
     margin-left: 10px;
     margin-right: 10px;
     width: 20%;
 }
 
+.gallery-col > img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
 #book-me-bar {
-    height: 15%;
+    background-color: blue;
+    bottom: 0;
+    height: 100px;
+    left: 0;
+    position: fixed;
+    width: 100%;
 }
