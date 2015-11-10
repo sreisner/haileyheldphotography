@@ -55,7 +55,19 @@ body {
 }
 
 #gallery {
-    height: 75%;
+    height: 75%
+    width: 100%;
+    display: flex;
+    align-contents: center;
+    justify-content: center;
+}
+
+.gallery-col {
+    background-color: red;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 20%;
 }
 
 #book-me-bar {
