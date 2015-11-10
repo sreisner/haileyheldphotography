@@ -4,7 +4,7 @@ body {
 }
 
 #nav-bar {
-    background-color: black;
+    background-color: #000000;
     height: 100px;
     margin-top: -8px;
     position: fixed;
@@ -62,11 +62,11 @@ body {
 }
 
 #gallery {
+    align-contents: center;
+    display: flex;
+    justify-content: center;
     padding-top: 100px;
     width: 100%;
-    display: flex;
-    align-contents: center;
-    justify-content: center;
 }
 
 .gallery-col {
@@ -76,6 +76,6 @@ body {
 }
 
 .gallery-col > img {
-    width: 100%;
     margin-bottom: 10px;
+    width: 100%;
 }
