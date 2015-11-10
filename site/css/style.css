@@ -1,0 +1,14 @@
+#nav-bar {
+    height: 10%;
+    background-color: red;
+}
+
+#gallery {
+    height: 75%;
+    background-color: green;
+}
+
+#book-me-bar {
+    height: 15%;
+    background-color: blue;
+}
