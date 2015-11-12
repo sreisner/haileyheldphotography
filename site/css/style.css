@@ -90,12 +90,19 @@ body {
     width: 100%;
 }
 
+@keyframes overlay-animation-on {
+    from { background-color: rgba(255, 255, 255, 0); }
+    to { background-color: rgba(255, 255, 255, 0.1); }
+}
+
 .img-container:hover .img-overlay {
+    animation-name: overlay-animation-on;
+    animation-duration: 0.5s;
+    background-color: rgba(255, 255, 255, 0.1);
     display: block;
 }
 
 .img-container .img-overlay {
-    background-color: rgba(255, 255, 255, 0.1);
     display: none;
     height: 100%;
     left: 0;
