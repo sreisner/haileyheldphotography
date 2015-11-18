@@ -18,7 +18,7 @@
         $success = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
         $name = hash_file('md5', $target_file);
         rename($target_file, $target_dir . $name . '.jpg');
-        registerPhoto(1, $name);
+        registerPhoto($_POST["series"], $_POST["caption"], $name);
         header('Location: index.php');
     }
 
@@ -27,17 +27,20 @@
     <head>
     </head>
     <body>
-        <div class="series">
-            <select>
-                <?php
-                    echoSeriesOptions();
-                ?>
-            </select>
-        </div>
         <div class="upload">
             <form method="post" enctype="multipart/form-data">
-                Select image to upload:
-                <input type="file" name="fileToUpload" id="fileToUpload">
+                <h1>Select image to upload:</h1>
+
+                <label for="series">Series:</label>
+                <select name="series">
+                    <?php
+                        echoSeriesOptions();
+                    ?>
+                </select><br />
+
+                <label for="caption">Caption:</label>
+                <input type="text" name="caption" id="caption"><br />
+                <input type="file" name="fileToUpload" id="fileToUpload"><br />
                 <input type="submit" value="Upload Image" name="submit">
             </form>
         </div>
