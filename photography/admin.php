@@ -1,5 +1,5 @@
 <?php
-    require_once '../external_includes/utils.php';
+    require_once 'utils.php';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $target_dir = 'images/';
@@ -18,7 +18,7 @@
         $success = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
         $name = hash_file('md5', $target_file);
         rename($target_file, $target_dir . $name . '.jpg');
-        registerPhoto(1, $name, 1, 1);
+        registerPhoto(1, $name);
         header('Location: index.php');
     }
 

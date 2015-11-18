@@ -1,5 +1,5 @@
 <?php
-    require_once "../external_includes/utils.php";
+     require_once "utils.php";
 ?>
 <html>
     <head>
@@ -26,24 +26,39 @@
             </div>
         </div>
         <div id="gallery">
+            <?php
+                $images = getImagesInSeries(1);
+            ?>
             <div class="gallery-col" id="col1">
                 <?php
-                    echoGalleryColumn(1);
+                    for($i = 0; $i < count($images); $i += 4) {
+                        $currentImage = $images[$i];
+                        echo getImageContainerHTML($currentImage["id"], $currentImage["filename"]); 
+                    }
                 ?>
             </div>
             <div class="gallery-col" id="col2">
                 <?php
-                    echoGalleryColumn(2);
+                    for($i = 1; $i < count($images); $i += 4) {
+                        $currentImage = $images[$i];
+                        echo getImageContainerHTML($currentImage["id"], $currentImage["filename"]); 
+                    }
                 ?>
             </div>
             <div class="gallery-col" id="col3">
                 <?php
-                    echoGalleryColumn(3);
+                    for($i = 2; $i < count($images); $i += 4) {
+                        $currentImage = $images[$i];
+                        echo getImageContainerHTML($currentImage["id"], $currentImage["filename"]); 
+                    }
                 ?>
             </div>
             <div class="gallery-col" id="col4">
                 <?php
-                    echoGalleryColumn(4);
+                    for($i = 3; $i < count($images); $i += 4) {
+                        $currentImage = $images[$i];
+                        echo getImageContainerHTML($currentImage["id"], $currentImage["filename"]); 
+                    }
                 ?>
             </div>
         </div>
