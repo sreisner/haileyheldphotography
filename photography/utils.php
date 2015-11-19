@@ -1,9 +1,9 @@
 <?php
     require_once '../external_includes/config.php';
+    require_once 'constants.php';
 
     function getImagesInSeries($seriesId) {
         $conn = getDatabaseConnection();
-        $image_folder = "images";
         $sql = "SELECT id, series, filename, caption, upload_date
                 FROM photo
                 WHERE series=" . $seriesId . "
@@ -19,12 +19,9 @@
     }
 
     function getImageContainerHTML($id, $filename) {
-        // TODO:  Put this variable in config.php, or somewhere else that's global.
-        $image_folder = 'images';
-
         $html = '';
         $html .= '<div class="img-container">';
-        $html .= '    <img id="' . $id . '" src="' . $image_folder . '/' . $filename . '.jpg" />';
+        $html .= '    <img id="' . $id . '" src="' . IMAGE_FOLDER . '/' . $filename . '.jpg" />';
         $html .= '    <div class="img-overlay"></div>';
         $html .= '</div>';
 

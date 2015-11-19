@@ -1,9 +1,9 @@
 <?php
     require_once 'utils.php';
+    require_once 'constants.php';
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $target_dir = 'images/';
-        $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+        $target_file = IMAGE_FOLDER . '/' . basename($_FILES["fileToUpload"]["name"]);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
 
@@ -17,7 +17,7 @@
         }
         $success = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
         $name = hash_file('md5', $target_file);
-        rename($target_file, $target_dir . $name . '.jpg');
+        rename($target_file, IMAGE_FOLDER . '/' . $name . '.jpg');
         registerPhoto($_POST["series"], $_POST["caption"], $name);
         header('Location: index.php');
     }
