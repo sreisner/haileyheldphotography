@@ -49,6 +49,9 @@
                         </li>
                         <li><a href="book.php" class="navbar-link">Book Me</a></li>
                         <li><a href="about.php" class="navbar-link">About</a></li>
+                        <li><a href="https://www.instagram.com/haileyheld/"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.facebook.com/haileyheldphotography/"><i class="fa fa-facebook-square"></i></a></li>
+                        <li><a href="https://www.flickr.com/photos/haileyheld"><i class="fa fa-flickr"></i></a></li>
                     </ul>
                 </div>
             </div>
