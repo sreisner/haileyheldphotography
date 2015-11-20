@@ -25,6 +25,8 @@
 ?>
 <html>
     <head>
+        <link rel="stylesheet" href="css/admin.css">
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
               integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ=="
               crossorigin="anonymous">
@@ -38,7 +40,43 @@
                 crossorigin="anonymous"></script>
     </head>
     <body>
-        <div class="upload container">
+        <div class="container">
+            <div class="row">
+                <label for="series">Series:</label>
+                    <select name="series">
+                        <?php
+                            echoSeriesOptions();
+                        ?>
+                    </select>
+                </label>
+            </div>
+
+            <table class="table">
+                <tr>
+                    <th>Image</th>
+                    <th>Caption</th>
+                    <th></th>
+                </tr>
+                <?php
+                    $images = getImagesInSeries(1);
+                    for($i = 0; $i < count($images); $i++) {
+                        $image = $images[$i];
+                        echo '<tr>';
+                        echo '    <td>';
+                        echo '        <div class="cropped">';
+                        echo '            <img src="' . IMAGE_FOLDER . '/' . $image['filename'] . '.jpg' . '">';
+                        echo '        </div>';
+                        echo '    </td>';
+                        echo '    <td>';
+                        echo          $image['caption'];
+                        echo '    </td>';
+                        echo '    <td>';
+                        echo '        <a href="#">Delete</a>';
+                        echo '    </td>';
+                        echo '</tr>';
+                    }
+                ?>
+            </table>
             <form method="post" enctype="multipart/form-data">
                 <div class="h1 text-center">The Admin Panel of <strong>DOOM</strong></div>
 
@@ -56,8 +94,7 @@
                     <input class="form-control" type="text" name="caption" id="caption">
                 </div>
                 
-                <div class="form-group">
-                    <label for="fileToUpload">Image</label>
+                <div class="form-group"> <label for="fileToUpload">Image</label>
                     <input type="file" name="fileToUpload" id="fileToUpload">
                     <p class="help-block">Only .jpg's right now.</p>
                 </div>

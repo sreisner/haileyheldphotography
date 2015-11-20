@@ -1,0 +1,10 @@
+.cropped {
+    height: 250px;
+    width: 250px;
+    overflow: hidden;
+}
+
+.cropped > img {
+    max-height: 250px;
+}
+

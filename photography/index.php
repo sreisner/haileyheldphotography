@@ -1,65 +1,61 @@
 <?php
-     require_once "utils.php";
-?>
-<html>
+    require_once 'utils.php';
+    require_once 'constants.php';
+
+    function echoSeriesListItems() {
+        $series = getSeries();
+        for($i = 0; $i < count($series); $i++) {
+            $current = $series[$i];
+            echo '<li><a class="series-link" id="' . $current["id"] . '" onclick="onSeriesClick(this)">' . $current["name"] . '</a></li>';
+        }
+    }
+
+    ?>
+<!DOCTYPE html>
+<html lang="en">
     <head>
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/index.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-        <link href='https://fonts.googleapis.com/css?family=Raleway:400,200' rel='stylesheet' type='text/css'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:400,200'>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <script src="js/script.js"></script>
+
     </head>
-    <body>
-        <div id="nav-bar">
-            <div id="logo">
-                <p>Hailey Held Photography</p>
-            </div>
-            <div id="link-section">
-                <div id="site-links">
-                    <a href="index.html">Gallery</a>
-                    <a href="book.html">Book Me</a>
-                    <a href="about.html">About</a>
+    <body onload="onload()">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Hailey Held Photography</a>
                 </div>
-                <div id="social-links">
-                    <a href="https://www.instagram.com/haileyheld/"><i class="fa fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/haileyheldphotography/"><i class="fa fa-facebook-square"></i></a>
-                    <a href="https://www.flickr.com/photos/haileyheld"><i class="fa fa-flickr"></i></a>
+                <div class="collapse navbar-collapse navbar-right">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                               role="button" aria-haspopup="true" aria-expanded="false">
+                                <span id="current-series"></span>
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <?php
+                                    echoSeriesListItems();
+                                ?>
+                            </ul>
+                        </li>
+                        <li><a href="book.php" class="navbar-link">Book Me</a></li>
+                        <li><a href="about.php" class="navbar-link">About</a></li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <div id="gallery">
-            <?php
-                $images = getImagesInSeries(1);
-            ?>
-            <div class="gallery-col" id="col1">
-                <?php
-                    for($i = 0; $i < count($images); $i += 4) {
-                        $currentImage = $images[$i];
-                        echo getImageContainerHTML($currentImage["id"], $currentImage["filename"]); 
-                    }
-                ?>
-            </div>
-            <div class="gallery-col" id="col2">
-                <?php
-                    for($i = 1; $i < count($images); $i += 4) {
-                        $currentImage = $images[$i];
-                        echo getImageContainerHTML($currentImage["id"], $currentImage["filename"]); 
-                    }
-                ?>
-            </div>
-            <div class="gallery-col" id="col3">
-                <?php
-                    for($i = 2; $i < count($images); $i += 4) {
-                        $currentImage = $images[$i];
-                        echo getImageContainerHTML($currentImage["id"], $currentImage["filename"]); 
-                    }
-                ?>
-            </div>
-            <div class="gallery-col" id="col4">
-                <?php
-                    for($i = 3; $i < count($images); $i += 4) {
-                        $currentImage = $images[$i];
-                        echo getImageContainerHTML($currentImage["id"], $currentImage["filename"]); 
-                    }
-                ?>
+        </nav>
+        
+        <div class="container-fluid">
+            <div id="image-grid" class="row">
             </div>
         </div>
     </body>

@@ -1,0 +1,39 @@
+body {
+    padding-top: 70px;
+    background-color: black;
+    font-family: 'Raleway', sans-serif;
+}
+
+.img-container {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+}
+
+@keyframes overlay-animation-on {
+    from { background-color: rgba(255, 255, 255, 0); }
+    to { background-color: rgba(255, 255, 255, 0.1); }
+}
+
+.img-container:hover .img-overlay {
+    animation-name: overlay-animation-on;
+    animation-duration: 0.5s;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: block;
+}
+
+.img-container .img-overlay {
+    display: none;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.series-link:hover {
+    cursor: pointer;
+}
