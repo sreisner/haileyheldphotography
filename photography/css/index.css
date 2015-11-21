@@ -37,3 +37,9 @@ body {
 .series-link:hover {
     cursor: pointer;
 }
+
+.navbar-social-links {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
