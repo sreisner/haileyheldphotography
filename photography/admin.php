@@ -22,6 +22,14 @@
         header('Location: index.php');
     }
 
+    function echoSeriesOptions() {
+        $series = getSeries();
+        for($i = 0; $i < count($series); $i++) {
+            $current = $series[$i];
+            echo '<option value="' . $current["id"] . '">' . $current["name"] . '</option>';
+        }
+    }
+
 ?>
 <html>
     <head>
