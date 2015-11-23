@@ -16,15 +16,25 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+        <!-- Google Fonts -->
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:400,200'>
+
+        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-
-        <link rel="stylesheet" href="css/index.css">
-
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <!-- PhotoSwipe -->
+        <link rel="stylesheet" href="css/photoswipe.css">
+        <link rel="stylesheet" href="css/default-skin/default-skin.css">
+        <script src="js/photoswipe.min.js"></script>
+        <script src="js/photoswipe-ui-default.min.js"></script>
+        
+        <link rel="stylesheet" href="css/index.css">
         <script src="js/script.js"></script>
 
         <!-- Google Analytics -->
@@ -75,11 +85,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-        </div>
-        
-        <div class="container-fluid">
-            <div id="image-grid" class="row">
             </div>
         </div>
     </body>
