@@ -4,6 +4,6 @@
     $seriesId = $_REQUEST["seriesId"];
 
     if($seriesId !== '') {
-        echoImageGrid($seriesId);
+        echo json_encode(getImagesInSeries($seriesId));
     }
 ?>
