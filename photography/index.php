@@ -106,21 +106,21 @@
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="image-preview-container" data-caption="I am Hailey">
-                    <img src="images/1.jpg" />
+                    <img src="images/4.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">I am Hailey</p>
                     </div>
                 </div>
                 <div class="image-preview-container" data-caption="I like graffiti">
-                    <img src="images/2.jpg" />
+                    <img src="images/5.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">I like graffiti</p>
                     </div>
                 </div>
                 <div class="image-preview-container" data-caption="Wow.  Windows.">
-                    <img src="images/3.jpg" />
+                    <img src="images/6.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">Wow.  Windows.</p>
@@ -129,21 +129,21 @@
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="image-preview-container" data-caption="I am Hailey">
-                    <img src="images/1.jpg" />
+                    <img src="images/7.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">I am Hailey</p>
                     </div>
                 </div>
                 <div class="image-preview-container" data-caption="I like graffiti">
-                    <img src="images/2.jpg" />
+                    <img src="images/8.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">I like graffiti</p>
                     </div>
                 </div>
                 <div class="image-preview-container" data-caption="Wow.  Windows.">
-                    <img src="images/3.jpg" />
+                    <img src="images/9.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">Wow.  Windows.</p>
@@ -152,21 +152,21 @@
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="image-preview-container" data-caption="I am Hailey">
-                    <img src="images/1.jpg" />
+                    <img src="images/10.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">I am Hailey</p>
                     </div>
                 </div>
                 <div class="image-preview-container" data-caption="I like graffiti">
-                    <img src="images/2.jpg" />
+                    <img src="images/11.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">I like graffiti</p>
                     </div>
                 </div>
                 <div class="image-preview-container" data-caption="Wow.  Windows.">
-                    <img src="images/3.jpg" />
+                    <img src="images/12.jpg" />
                     <div class="image-preview-overlay-container">
                         <div class="image-preview-overlay-rectangle"></div>
                         <p class="image-preview-overlay-caption">Wow.  Windows.</p>
