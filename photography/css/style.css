@@ -13,26 +13,21 @@ body {
     width: 100%;
 }
 
-@keyframes image-preview-overlay-animation {
-    from { background-color: rgba(255, 255, 255, 0); }
-    to { background-color: rgba(255, 255, 255, 0.1); }
-}
-
-.image-preview-container:hover .image-preview-overlay {
-    animation-name: image-preview-overlay-animation;
-    animation-duration: 0.5s;
-    background-color: rgba(255, 255, 255, 0.1);
+.image-preview-overlay {
+    transition: opacity 0.5s;
+    background-color: #FFFFFF;
+    opacity: 0;
     display: block;
-    cursor: pointer;
-}
-
-.image-preview-container .image-preview-overlay {
-    display: none;
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+.image-preview-overlay:hover {
+    opacity: 0.1;
+    cursor: pointer;
 }
 
 .series-link:hover {
