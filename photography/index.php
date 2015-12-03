@@ -88,42 +88,53 @@
                 </div>
                 <div class="image-preview-container">
                     <img src="images/2.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
                 <div class="image-preview-container">
                     <img src="images/3.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="image-preview-container">
                     <img src="images/1.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
                 <div class="image-preview-container">
                     <img src="images/2.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
                 <div class="image-preview-container">
                     <img src="images/3.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="image-preview-container">
                     <img src="images/1.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
                 <div class="image-preview-container">
                     <img src="images/2.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
                 <div class="image-preview-container">
                     <img src="images/3.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
             </div>
             <div class="col-sm-6 col-md-3">
                 <div class="image-preview-container">
                     <img src="images/1.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
                 <div class="image-preview-container">
                     <img src="images/2.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
                 <div class="image-preview-container">
                     <img src="images/3.jpg" />
+                    <div class="image-preview-overlay"></div>
                 </div>
             </div>
         </div>
