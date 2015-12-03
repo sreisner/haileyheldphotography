@@ -1,111 +1,45 @@
 body {
     background-color: black;
     font-family: 'Raleway', sans-serif;
+    padding-top: 70px;
 }
 
-#nav-bar {
-    background-color: #000000;
-    height: 100px;
-    left: 0;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
+.image-preview-container {
+    padding-bottom: 20px;
 }
 
-#logo {
-    align-items: center;
-    color: #FFFFFF;
-    display: flex;
-    float: left;
-    height: 100%;
-    justify-content: center;
-    width: 300px;
-}
-
-#link-section {
-    display: flex;
-    float: right;
-    height: 100%;
-}
-
-#site-links {
-    align-items: center;
-    display: flex;
-    float: left;
-    justify-content: center;
-    margin: 25px;
-}
-
-#site-links > a {
-    color: #FFFFFF;
-    padding: 15px;
-    text-decoration: none;
-}
-
-#site-links > a:hover {
-}
-
-#social-links {
-    align-items: center;
-    display: flex;
-    float: right;
-    justify-content: center;
-    margin-left: 10px;
-    margin-right: 25px;
-}
-
-#social-links > a {
-    color: #FFFFFF;
-    padding: 5px;
-    text-decoration: none;
-}
-
-#gallery {
-    align-contents: center;
-    display: flex;
-    justify-content: center;
-    padding-top: 100px;
+.image-preview-container > img {
     width: 100%;
 }
 
-.gallery-col {
-    margin-left: 10px;
-    margin-right: 10px;
-    width: 20%;
-}
-
-.gallery-col > img {
-    margin-bottom: 10px;
-    width: 100%;
-}
-
-.img-container {
-    margin-bottom: 10px;
-    position: relative;
-}
-
-.img-container img {
-    width: 100%;
-}
-
-@keyframes overlay-animation-on {
+@keyframes image-preview-overlay-animation {
     from { background-color: rgba(255, 255, 255, 0); }
     to { background-color: rgba(255, 255, 255, 0.1); }
 }
 
-.img-container:hover .img-overlay {
-    animation-name: overlay-animation-on;
+.image-preview-container:hover > .image-preview-overlay {
+    animation-name: image-preview-overlay-animation;
     animation-duration: 0.5s;
     background-color: rgba(255, 255, 255, 0.1);
     display: block;
+    cursor: pointer;
 }
 
-.img-container .img-overlay {
+.image-preview-container > .image-preview-overlay {
     display: none;
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+.series-link:hover {
+    cursor: pointer;
+}
+
+.social-links {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 }

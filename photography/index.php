@@ -10,7 +10,7 @@
         }
     }
 
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,8 +34,7 @@
         <script src="js/photoswipe/photoswipe.min.js"></script>
         <script src="js/photoswipe/photoswipe-ui-default.min.js"></script>
         
-        <link rel="stylesheet" href="css/index.css">
-        <script src="js/script.js"></script>
+        <link rel="stylesheet" href="css/style.css">
 
         <!-- Google Analytics -->
         <script>
@@ -49,7 +48,7 @@
         </script>
 
     </head>
-    <body onload="onload()">
+    <body>
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -70,15 +69,9 @@
                                 <span id="current-series"></span>
                                 <span class="caret"></span>
                             </a>
-                            <ul class="dropdown-menu">
-                                <?php
-                                    echoSeriesListItems();
-                                ?>
-                            </ul>
                         </li>
-                        <li><a href="book.php" class="navbar-link">Book Me</a></li>
                         <li><a href="about.php" class="navbar-link">About</a></li>
-                        <li class="navbar-social-links"> 
+                        <li class="social-links"> 
                             <a href="https://www.instagram.com/haileyheld/"><i class="fa fa-instagram"></i></a>
                             <a href="https://www.facebook.com/haileyheldphotography/"><i class="fa fa-facebook-square"></i></a>
                             <a href="https://www.flickr.com/photos/haileyheld"><i class="fa fa-flickr"></i></a>
@@ -87,6 +80,54 @@
                 </div>
             </div>
         </div>
+        <div id="gallery">
+            <div class="col-sm-6 col-md-3">
+                <div class="image-preview-container">
+                    <img src="images/1.jpg" />
+                    <div class="image-preview-overlay"></div>
+                </div>
+                <div class="image-preview-container">
+                    <img src="images/2.jpg" />
+                </div>
+                <div class="image-preview-container">
+                    <img src="images/3.jpg" />
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="image-preview-container">
+                    <img src="images/1.jpg" />
+                </div>
+                <div class="image-preview-container">
+                    <img src="images/2.jpg" />
+                </div>
+                <div class="image-preview-container">
+                    <img src="images/3.jpg" />
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="image-preview-container">
+                    <img src="images/1.jpg" />
+                </div>
+                <div class="image-preview-container">
+                    <img src="images/2.jpg" />
+                </div>
+                <div class="image-preview-container">
+                    <img src="images/3.jpg" />
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="image-preview-container">
+                    <img src="images/1.jpg" />
+                </div>
+                <div class="image-preview-container">
+                    <img src="images/2.jpg" />
+                </div>
+                <div class="image-preview-container">
+                    <img src="images/3.jpg" />
+                </div>
+            </div>
+        </div>
+        <!--
         <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="pswp__bg"></div>
             <div class="pswp__scroll-wrap">
@@ -123,5 +164,6 @@
                 </div>
             </div>
         </div>
+        -->
     </body>
 </html>
