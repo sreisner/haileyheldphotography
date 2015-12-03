@@ -18,18 +18,6 @@
         return $images;
     }
 
-    
-    function getSeries() {
-        $conn = getDatabaseConnection();
-        $sql = 'SELECT id, name FROM series';
-        $results = $conn->query($sql);
-        $series = array();
-        for($i = 0; $row = $results->fetch_assoc(); $i++) {
-            $series[$i] = $row;
-        }
-        return $series;
-    }
-
     function echoImageGrid($seriesId) {
         $images = getImagesInSeries($seriesId);
         for($i = 0; $i < 4; $i++) {

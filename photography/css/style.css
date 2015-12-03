@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: #000000;
     font-family: 'Raleway', sans-serif;
     padding-top: 70px;
 }
@@ -48,7 +48,7 @@ body {
     cursor: pointer;
 }
 
-.social-links {
+.social-links, .series-links {
     display: flex !important;
     align-items: center;
     justify-content: center;
