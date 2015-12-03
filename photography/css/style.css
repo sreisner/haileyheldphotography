@@ -39,3 +39,7 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.modal-body > img {
+    width: 100%;
+}

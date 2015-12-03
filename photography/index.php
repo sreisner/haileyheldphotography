@@ -25,7 +25,7 @@
 
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        
+
         <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
@@ -47,9 +47,8 @@
             ga('create', 'UA-70470640-1', 'auto');
             ga('send', 'pageview');
         </script>
-
     </head>
-    <body>
+    <body onload="onload()">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -139,14 +138,15 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog">
+        <div id="imageModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title"></h4>
                     </div>
-                    <div class="modal-body"></div>
+                    <div class="modal-body">
+                    </div>
                 </div>
             </div>
         </div>
