@@ -3,6 +3,7 @@ var currentSeriesId;
 
 function onload() {
     registerPhotoPreviewClickHandler();
+    registerSeriesClickHandler();
     initializeSeries();
     initializeImageGallery();
 }
@@ -13,6 +14,15 @@ function registerPhotoPreviewClickHandler() {
         $('.modal-body').html(image);
         $('.modal-title').html($(this).attr("data-caption"));
         $('#imageModal').modal();
+    });
+}
+
+function registerSeriesClickHandler() {
+    $('.dropdown-menu').on('click', 'a', function() {
+        var seriesId = $(this).attr("data-id");
+        selectSeries(seriesId);
+        clearImageGallery();
+        initializeImageGallery();
     });
 }
 
@@ -56,6 +66,13 @@ function selectSeries(seriesId) {
     dropdownTitle.html(name);
 
     currentSeriesId = seriesId;
+}
+
+function clearImageGallery() {
+    var columns = document.getElementsByClassName('gallery-column');
+    for(var i = 0; i < columns.length; i++) {
+        $(columns[i]).html('');
+    }
 }
 
 function initializeImageGallery() {
