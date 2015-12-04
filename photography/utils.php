@@ -18,29 +18,6 @@
         return $images;
     }
 
-    function echoImageGrid($seriesId) {
-        $images = getImagesInSeries($seriesId);
-        for($i = 0; $i < 4; $i++) {
-            echo '<div class="col-sm-12 col-md-3">';
-            for($j = $i; $j < count($images); $j += 4) {
-                $current = $images[$j];
-                $path = 'images' . '/' . $current['filename'] . '.jpg';
-                echo getImageContainerHTML($current['id'], $path);
-            }
-            echo '</div>';
-        }
-    }
-
-    function getImageContainerHTML($id, $path) {
-        $html = '';
-        $html .= '<div class="img-container">';
-        $html .= '    <img id="' . $id . '" src="' . $path . '" />';
-        $html .= '    <div class="img-overlay"></div>';
-        $html .= '</div>';
-
-        return $html;
-    }
-
     function registerPhoto($seriesId, $caption, $filename) {
         $conn = getDatabaseConnection();
         $sql = 'INSERT INTO photo (series, caption, filename)
