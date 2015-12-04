@@ -1,33 +1,84 @@
 <?php
-    require_once 'utils.php';
-    require_once 'constants.php';
+    require_once '../external_includes/config.php';
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $target_file = 'images/' . basename($_FILES["fileToUpload"]["name"]);
-        $uploadOk = 1;
-        $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION);
+    $image_upload_success = false;
+    $error_message = '';
 
-        if(isset($_POST["submit"])) {
-            $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-            $uploadOk = ($check !== false);
-            if(file_exists($target_file)) {
-                $uploadOk = 0;
-            }
-            
+    function registerPhoto($seriesId, $caption, $filename) {
+        $conn = getDatabaseConnection();
+        $sql = 'INSERT INTO photo (series, caption, filename)
+                VALUES (' . $seriesId . ', "' . $caption . '", "' . $filename . '")';
+        $conn->query($sql);
+
+        if(mysqli_error($conn)) {
+            $error_message = 'Database error.  Email Shawn.  ' . mysqli_error($conn);
         }
-        $success = move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file);
-        $name = hash_file('md5', $target_file);
-        rename($target_file, 'images/' . $name . '.jpg');
-        registerPhoto($_POST["series"], $_POST["caption"], $name);
-        header('Location: index.php');
     }
 
+    function convertImageToJpeg($originalImagePath, $outputImagePath, $quality) {
+        $file_type = pathinfo($_FILES["fileToUpload"]["name"], PATHINFO_EXTENSION);
+        switch($file_type) {
+            case 'jpg':
+            case 'jpeg':
+                $tempImage = imagecreatefromjpeg($originalImagePath);
+                break;
+            case 'png':
+                $tempImage = imagecreatefrompng($originalImagePath);
+                break;
+            default:
+                return 0;
+        }
+
+        imagejpeg($tempImage, $outputImagePath, $quality);
+        imagedestroy($tempImage);
+
+        return 1;
+    }
+
+    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $seriesId = $_POST["series"];
+        $caption = $_POST["caption"];
+        $image_temp_name = $_FILES["fileToUpload"]["tmp_name"];
+        if($seriesId == '') {
+            $error_message = 'You must select a series.';
+        } else if($image_temp_name == '') {
+            if($_FILES["fileToUpload"]['error'] == UPLOAD_ERR_INI_SIZE) {
+                $error_message = 'Image must be < 32M.  Tell Shawn if that\'s a problem and we can raise the limit.';
+            } else if($_FILES["fileToUpload"]['error'] == UPLOAD_ERR_NO_FILE) {
+                $error_message = 'You must select a file to upload.';
+            } else if($_FILES["fileToUpload"]['error']) {
+                $error_message = 'Internal error #' . $_FILES["fileToUpload"]['error'] . '. Tell Shawn.';
+            } else {
+                $error_message = 'Okay, there\'s really no reason for this happening.  Tell Shawn.';
+            }
+        } else {
+            $file_hash = hash_file('md5', $image_temp_name);
+            $target_path = 'images/' . $file_hash . '.jpg';
+            if(!file_exists($target_path)) {
+                $success = convertImageToJpeg($image_temp_name, $target_path, 50);
+                if(!$success) {
+                    $error_message = "Unsupported file format.  Only jpg/jpeg/png allowed.";
+                }
+            }
+
+            registerPhoto($seriesId, $caption, $target_path);
+            $image_upload_success = strlen($error_message) == 0;
+        }
+    }
 ?>
 <html>
     <head>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+        <!-- Bootstrap -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+        <!-- Custom Javascript -->
+        <script src="js/common.js"></script>
+        <script src="js/admin.js"></script>
 
         <!-- Google Analytics -->
         <script>
@@ -40,31 +91,34 @@
             ga('send', 'pageview');
         </script>
     </head>
-    <body>
+    <body onload="onload()">
         <div class="container">
             <form method="post" enctype="multipart/form-data">
                 <div class="h1 text-center">The Admin Panel of <strong>DOOM</strong></div>
 
-                <div class="form-group">
-                    <label for="series">Series:</label>
-                    <select class="form-control" name="series">
-                        <?php
-                            echoSeriesOptions();
-                        ?>
-                    </select>
+                <div class="form-group"> <label for="fileToUpload">Image</label>
+                    <input type="file" name="fileToUpload" id="fileToUpload">
                 </div>
 
                 <div class="form-group">
                     <label for="caption">Caption:</label>
                     <input class="form-control" type="text" name="caption" id="caption">
                 </div>
-                
-                <div class="form-group"> <label for="fileToUpload">Image</label>
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                    <p class="help-block">Only .jpg's right now.</p>
+
+                <div class="form-group">
+                    <label for="series">Series:</label>
+                    <select id="series" class="form-control" name="series"></select>
                 </div>
+                
                 <button type="submit" name="submit" class="btn btn-default">Upload</button>
             </form>
+            <?php
+                if($error_message) {
+                    echo '<div class="alert alert-danger" role="alert">' . $error_message . '</div>';
+                } else if($image_upload_success) {
+                    echo '<div class="alert alert-success" role="alert">Image uploaded successfully.</div>';
+                }
+            ?>
         </div>
     </body>
 </html>

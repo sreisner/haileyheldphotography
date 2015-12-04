@@ -1,6 +1,6 @@
 <?php
-    require_once 'utils.php';
-
+    require_once '../external_includes/config.php';
+    
     function getSeries() {
         $conn = getDatabaseConnection();
         $sql = 'SELECT id, name FROM series';

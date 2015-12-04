@@ -21,7 +21,8 @@
         <!-- Custom Styles -->
         <link rel="stylesheet" href="css/style.css">
 
-        <!-- Custom javascript -->
+        <!-- Custom Javascript -->
+        <script src="js/common.js"></script>
         <script src="js/index.js"></script>
 
         <!-- Google Analytics -->

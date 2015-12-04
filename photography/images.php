@@ -1,5 +1,5 @@
 <?php
-    require_once 'utils.php';
+    require_once '../external_includes/config.php';
 
     function getImages($seriesId) {
         $conn = getDatabaseConnection();
