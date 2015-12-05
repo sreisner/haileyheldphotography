@@ -1,5 +1,10 @@
+@font-face {
+    font-family: Alcubierre;
+    src: url("../fonts/Alcubierre.otf") format("opentype");
+}
+
 body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Alcubierre', sans-serif;
 }
 
 .image-preview-container {

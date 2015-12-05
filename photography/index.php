@@ -7,9 +7,6 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-        <!-- Google Fonts -->
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:400,200'>
-
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -38,7 +35,7 @@
         </script>
     </head>
     <body onload="onload()">
-        <div class="navbar navbar-fixed-top">
+        <div class="navbar navbar-default navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"

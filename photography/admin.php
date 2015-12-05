@@ -67,9 +67,6 @@
 ?>
 <html>
     <head>
-        <!-- Google Fonts -->
-        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:400,200'>
-
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
