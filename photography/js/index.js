@@ -5,7 +5,7 @@ function onload() {
     registerPhotoPreviewClickHandler();
     registerSeriesClickHandler();
     initializeSeries();
-    initializeImageGallery();
+    populateImageGallery(currentSeriesId);
 }
 
 function registerPhotoPreviewClickHandler() {

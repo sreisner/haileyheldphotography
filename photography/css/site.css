@@ -7,6 +7,10 @@ body {
     font-family: 'Alcubierre', sans-serif;
 }
 
+.gallery-column {
+    padding: 2.5px;
+}
+
 .image-preview-container {
     margin-bottom: 5px;
     position: relative;
