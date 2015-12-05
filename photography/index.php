@@ -45,7 +45,7 @@
                          <span class="icon-bar"></span>
                          <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Hailey Held Photography</a>
+                    <a class="navbar-brand" href="#">hailey held photography</a>
                 </div>
                 <div id="navbarHeaderCollapse" class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
