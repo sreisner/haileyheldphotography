@@ -28,7 +28,6 @@
             default:
                 return 0;
         }
-
         imagejpeg($tempImage, $outputImagePath, $quality);
         imagedestroy($tempImage);
 
@@ -68,6 +67,9 @@
 ?>
 <html>
     <head>
+        <!-- Google Fonts -->
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Raleway:400,200'>
+
         <!-- JQuery -->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
@@ -76,8 +78,12 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="css/site.css">
+        <link rel="stylesheet" href="css/admin.css">
+
         <!-- Custom Javascript -->
-        <script src="js/common.js"></script>
+        <script src="js/site.js"></script>
         <script src="js/admin.js"></script>
 
         <!-- Google Analytics -->
@@ -92,33 +98,102 @@
         </script>
     </head>
     <body onload="onload()">
+        <div class="row">
+            <div class="page-header h1 text-center">
+                The Admin Panel of <strong>DOOM</strong>
+            </div>
+        </div>
+
         <div class="container">
-            <form method="post" enctype="multipart/form-data">
-                <div class="h1 text-center">The Admin Panel of <strong>DOOM</strong></div>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">Upload</a></li>
+                <li role="presentation"><a href="#manage" aria-controls="manage" role="tab" data-toggle="tab">Manage</a></li>
+            </ul>
 
-                <div class="form-group"> <label for="fileToUpload">Image</label>
-                    <input type="file" name="fileToUpload" id="fileToUpload">
-                </div>
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="upload">
+                    <div class="page-header h2">Upload</div>
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <div class="form-group">
+                                    <label for="fileToUpload">Image</label>
+                                    <input type="file" name="fileToUpload" id="fileToUpload">
+                                </div>
+                            </div>
+                            <div class="col-xs-3">
+                                <div class="form-group">
+                                    <label for="series">Series</label>
+                                    <select id="upload-series" class="series form-control" name="series"></select>
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="caption">Caption:</label>
-                    <input class="form-control" type="text" name="caption" id="caption">
-                </div>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="form-group">
+                                    <label for="caption">Caption</label>
+                                    <input class="form-control" type="text" name="caption" id="caption">
+                                </div>
+                            </div>
+                        </div>
 
-                <div class="form-group">
-                    <label for="series">Series:</label>
-                    <select id="series" class="form-control" name="series"></select>
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <button type="submit" name="submit" class="btn btn-default">Upload</button>
+                            </div>
+                        </div>
+                    </form>
+                    <?php
+                        if($error_message) {
+                            echo '<div class="alert alert-danger" role="alert">' . $error_message . '</div>';
+                        } else if($image_upload_success) {
+                            echo '<div class="alert alert-success" role="alert">Image uploaded successfully.</div>';
+                        }
+                    ?>
                 </div>
-                
-                <button type="submit" name="submit" class="btn btn-default">Upload</button>
-            </form>
-            <?php
-                if($error_message) {
-                    echo '<div class="alert alert-danger" role="alert">' . $error_message . '</div>';
-                } else if($image_upload_success) {
-                    echo '<div class="alert alert-success" role="alert">Image uploaded successfully.</div>';
-                }
-            ?>
+                <div role="tabpanel" class="tab-pane" id="manage">
+                    <div class="page-header h2">Manage</div>
+                    <div class="row">
+                        <div class="col-xs-8">
+                            <div class="row preview-series-row">
+                                <div class="col-xs-3">
+                                    <label for="series">Series</label>
+                                    <select id="preview-series" class="series form-control" name="series" onchange="updateManageGallery()"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12" id="gallery">
+                                    <div class="col-sm-3 gallery-column"></div>
+                                    <div class="col-sm-3 gallery-column"></div>
+                                    <div class="col-sm-3 gallery-column"></div>
+                                    <div class="col-sm-3 gallery-column"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="manage-form" class="col-xs-4">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label for="caption">Series</label>
+                                    <select id="edit-series" class="series form-control" name="series"></select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <label for="caption">Caption</label>
+                                    <input id="edit-caption" class="form-control" type="text" name="caption">
+                                </div>
+                            </div>
+                            <div class="row text-right edit-buttons-row">
+                                <div class="col-xs-12">
+                                    <button type="button" class="btn btn-danger" id="delete-image-button" onclick="deleteImage()">Delete</button>
+                                    <button type="button" class="btn btn-primary" id="save-image-button" onclick="saveImageMetadata()">Save</button>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

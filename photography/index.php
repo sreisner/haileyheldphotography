@@ -19,10 +19,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
         
         <!-- Custom Styles -->
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/site.css">
+        <link rel="stylesheet" href="css/index.css">
 
         <!-- Custom Javascript -->
-        <script src="js/common.js"></script>
+        <script src="js/site.js"></script>
         <script src="js/index.js"></script>
 
         <!-- Google Analytics -->

@@ -22,7 +22,7 @@ function registerSeriesClickHandler() {
         var seriesId = $(this).attr("data-id");
         selectSeries(seriesId);
         clearImageGallery();
-        initializeImageGallery();
+        populateImageGallery(seriesId);
     });
 }
 
@@ -52,38 +52,4 @@ function selectSeries(seriesId) {
     dropdownTitle.html(name);
 
     currentSeriesId = seriesId;
-}
-
-function clearImageGallery() {
-    var columns = document.getElementsByClassName('gallery-column');
-    for(var i = 0; i < columns.length; i++) {
-        $(columns[i]).html('');
-    }
-}
-
-function initializeImageGallery() {
-    var columns = document.getElementsByClassName('gallery-column');
-    var images = retrieveImagesFromServer();
-    for(var i = 0; i < images.length; i++) {
-        var image = images[i];
-        var column = columns[i % columns.length];
-        var html = [
-            '<div class="image-preview-container" data-caption="' + image.caption + '">',
-                '<img src="' + image.filename + '" />',
-                '<div class="image-preview-overlay-container">',
-                '    <div class="image-preview-overlay-rectangle"></div>',
-                '    <p class="image-preview-overlay-caption">' + image.caption + '</p>',
-                '</div>',
-            '</div>'
-        ].join('\n');
-        $(column).append(html);
-    }
-}
-
-function retrieveImagesFromServer() {
-    var response = $.ajax({
-        url: 'images.php?seriesId=' + currentSeriesId,
-        async: false
-    });
-    return $.parseJSON(response.responseText);
 }
