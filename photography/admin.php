@@ -97,30 +97,30 @@
     <body onload="onload()">
         <div class="row">
             <div class="page-header h1 text-center">
-                The Admin Panel of <strong>DOOM</strong>
+                the admin panel of <strong>doom</strong>
             </div>
         </div>
 
         <div class="container">
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">Upload</a></li>
-                <li role="presentation"><a href="#manage" aria-controls="manage" role="tab" data-toggle="tab">Manage</a></li>
+                <li role="presentation" class="active"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">upload</a></li>
+                <li role="presentation"><a href="#manage" aria-controls="manage" role="tab" data-toggle="tab">manage</a></li>
             </ul>
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="upload">
-                    <div class="page-header h2">Upload</div>
+                    <div class="page-header h2">upload</div>
                     <form method="post" enctype="multipart/form-data">
                         <div class="row">
                             <div class="col-xs-9">
                                 <div class="form-group">
-                                    <label for="fileToUpload">Image</label>
+                                    <label for="fileToUpload">image</label>
                                     <input type="file" name="fileToUpload" id="fileToUpload">
                                 </div>
                             </div>
                             <div class="col-xs-3">
                                 <div class="form-group">
-                                    <label for="series">Series</label>
+                                    <label for="series">series</label>
                                     <select id="upload-series" class="series form-control" name="series"></select>
                                 </div>
                             </div>
@@ -129,7 +129,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="caption">Caption</label>
+                                    <label for="caption">caption</label>
                                     <input class="form-control" type="text" name="caption" id="caption">
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
 
                         <div class="row">
                             <div class="col-xs-9">
-                                <button type="submit" name="submit" class="btn btn-default">Upload</button>
+                                <button type="submit" name="submit" class="btn btn-default">upload</button>
                             </div>
                         </div>
                     </form>
@@ -150,12 +150,12 @@
                     ?>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="manage">
-                    <div class="page-header h2">Manage</div>
+                    <div class="page-header h2">manage</div>
                     <div class="row">
                         <div class="col-xs-8">
                             <div class="row preview-series-row">
                                 <div class="col-xs-3">
-                                    <label for="series">Series</label>
+                                    <label for="series">series</label>
                                     <select id="preview-series" class="series form-control" name="series" onchange="updateManageGallery()"></select>
                                 </div>
                             </div>
@@ -171,20 +171,20 @@
                         <div id="manage-form" class="col-xs-4">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <label for="caption">Series</label>
+                                    <label for="caption">series</label>
                                     <select id="edit-series" class="series form-control" name="series"></select>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <label for="caption">Caption</label>
+                                    <label for="caption">caption</label>
                                     <input id="edit-caption" class="form-control" type="text" name="caption">
                                 </div>
                             </div>
                             <div class="row text-right edit-buttons-row">
                                 <div class="col-xs-12">
-                                    <button type="button" class="btn btn-danger" id="delete-image-button" onclick="deleteImage()">Delete</button>
-                                    <button type="button" class="btn btn-primary" id="save-image-button" onclick="saveImageMetadata()">Save</button>
+                                    <button type="button" class="btn btn-danger" id="delete-image-button" onclick="deleteImage()">delete</button>
+                                    <button type="button" class="btn btn-primary" id="save-image-button" onclick="saveImageMetadata()">save</button>
                                 </div>
                             </span>
                         </div>
