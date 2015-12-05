@@ -57,7 +57,7 @@
                             </a>
                             <ul class="dropdown-menu"></ul>
                         </li>
-                        <li><a href="about.php" class="navbar-link">About</a></li>
+                        <li><a href="about.php" class="navbar-link">about</a></li>
                         <li class="social-links"> 
                             <a href="https://www.instagram.com/haileyheld/"><i class="fa fa-instagram"></i></a>
                             <a href="https://www.facebook.com/haileyheldphotography/"><i class="fa fa-facebook-square"></i></a>
