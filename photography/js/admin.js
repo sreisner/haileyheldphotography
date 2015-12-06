@@ -42,7 +42,6 @@ function populateSeriesList() {
 
 function updateManageGallery() {
     var seriesId = getSelectedManageSeriesId();
-    hideManageForm();
     clearImageGallery();
     populateImageGallery(seriesId);
 }
@@ -63,9 +62,29 @@ function hideManageForm() {
 function deleteImage() {
     var confirm = window.confirm("Are you sure you want to delete this image?");
     if(confirm) {
+        var selectedImageId = getSelectedImageId();
+        $.ajax({
+            url: 'deleteImage.php?image=' + selectedImageId,
+            async: false
+        });
+        hideManageForm();
+        updateManageGallery();
     }
 }
 
 function saveImageMetadata() {
+    var selectedImageId = getSelectedImageId();
+    var newCaption = $('#edit-caption').val();
+    var newSeries = $('#edit-series').val();
+    $.ajax({
+        url: 'updateImage.php?image=' + selectedImageId + '&caption=' + newCaption + '&series=' + newSeries,
+        async: false
+    });
+    var selectedImageId = getSelectedImageId();
+    updateManageGallery();
+    selectImagePreview($('div[data-id="' + selectedImageId + '"]').find('.image-preview-overlay-container'));
+}
 
+function getSelectedImageId() {
+    return $('.selected').parent().attr('data-id');
 }
