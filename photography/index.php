@@ -49,7 +49,7 @@
                 </div>
                 <div id="navbarHeaderCollapse" class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
-                        <li class="dropdown">
+                        <li id="navbar-series" class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                                role="button" aria-haspopup="true" aria-expanded="false">
                                 <span id="current-series"></span>
@@ -57,7 +57,7 @@
                             </a>
                             <ul class="dropdown-menu"></ul>
                         </li>
-                        <li><a href="about.php" class="navbar-link">about</a></li>
+                        <li id="navbar-about"><a class="navbar-link" onclick="onAboutClick()">about</a></li>
                         <li class="social-links"> 
                             <a href="https://www.instagram.com/haileyheld/"><i class="fa fa-instagram"></i></a>
                             <a href="https://www.facebook.com/haileyheldphotography/"><i class="fa fa-facebook-square"></i></a>
@@ -73,6 +73,32 @@
                 <div class="col-sm-6 col-md-3 gallery-column"></div>
                 <div class="col-sm-6 col-md-3 gallery-column"></div>
                 <div class="col-sm-6 col-md-3 gallery-column"></div>
+            </div>
+        </div>
+        <div id="about">
+            <div class="container-fluid">
+                <div class="col-xs-12 col-md-4">
+                    <div class="row">
+                        <img id="profile-image" src="images/6b8bc2cc42ce97a8f33e3b25eb59c271.jpg" />
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-8">
+                    <div class="row">
+                        <div class="about-text">
+                            <p>
+                            Cray shabby chic seitan, direct trade swag crucifix literally bitters umami tattooed narwhal post-ironic tofu. Pitchfork shabby chic paleo, hammock fanny pack slow-carb flannel. Roof party aesthetic marfa pinterest lomo, hoodie dreamcatcher helvetica flexitarian yr. Gluten-free craft beer shabby chic, asymmetrical vinyl pour-over iPhone cornhole kitsch. Food truck kitsch cray paleo, cliche lumbersexual normcore vinyl wayfarers quinoa seitan retro meh flexitarian. Artisan tattooed roof party occupy, kombucha letterpress sriracha. Taxidermy quinoa lumbersexual, blog before they sold out ugh helvetica organic ethical.
+                            </p>
+
+                            <p>
+                            Hoodie artisan narwhal roof party occupy, echo park tofu tousled letterpress typewriter. Migas williamsburg selfies wayfarers hoodie, tacos fixie wolf bushwick 90's listicle bicycle rights seitan VHS neutra. Banjo hoodie celiac retro. YOLO art party letterpress, typewriter crucifix organic scenester jean shorts sriracha. Brunch chambray letterpress, cray shabby chic before they sold out bicycle rights. Pabst ramps messenger bag chillwave. Godard photo booth crucifix cray franzen food truck, beard craft beer roof party flannel tumblr pop-up stumptown jean shorts.
+                            </p>
+
+                            <p>
+                            Butcher fixie slow-carb scenester, single-origin coffee yuccie bespoke hoodie etsy godard meggings shabby chic normcore sustainable. Twee try-hard schlitz, intelligentsia plaid aesthetic stumptown readymade beard chambray heirloom cred pug. Umami street art fap freegan polaroid, kitsch artisan master cleanse dreamcatcher gluten-free plaid PBR&B beard farm-to-table. Lo-fi narwhal cronut fingerstache. Polaroid green juice you probably haven't heard of them, plaid selfies cray bitters master cleanse raw denim celiac pabst aesthetic. Cronut artisan kombucha squid, health goth knausgaard you probably haven't heard of them seitan literally VHS bitters bespoke kinfolk kickstarter. Beard celiac irony, hashtag austin flexitarian four loko.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div id="imageModal" class="modal fade" tabindex="-1" role="dialog">

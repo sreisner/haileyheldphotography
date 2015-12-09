@@ -2,8 +2,8 @@ var series;
 var currentSeriesId;
 
 function onload() {
+    $('#about').hide();
     registerPhotoPreviewClickHandler();
-    registerSeriesClickHandler();
     initializeSeries();
     populateImageGallery(currentSeriesId);
 }
@@ -17,19 +17,35 @@ function registerPhotoPreviewClickHandler() {
     });
 }
 
-function registerSeriesClickHandler() {
-    $('.dropdown-menu').on('click', 'a', function() {
-        var seriesId = $(this).attr("data-id");
-        selectSeries(seriesId);
-        clearImageGallery();
-        populateImageGallery(seriesId);
+function onSeriesClick(seriesButton) {
+    transitionToPage('#about', '#gallery');
+    $('.active').toggleClass('active');
+    $('#navbar-series').toggleClass('active');
+    $(seriesButton).parent().toggleClass('active');
+    var seriesId = $(seriesButton).attr("data-id");
+    selectSeries(seriesId);
+    clearImageGallery();
+    populateImageGallery(seriesId);
+}
+
+function onAboutClick() {
+    $('.active').toggleClass('active');
+    $('#navbar-about').toggleClass('active');
+    transitionToPage('#gallery', '#about');
+}
+
+function transitionToPage(fromSelector, toSelector) {
+    $(fromSelector).fadeOut(500, function() {
+        $(toSelector).fadeIn(500);
     });
 }
 
 function initializeSeries() {
     series = retrieveSeriesFromServer();
     populateSeriesDropdown();
-    var firstSeriesId = Object.keys(series)[0]
+    $('#navbar-series').toggleClass('active');
+    var firstSeriesId = Object.keys(series)[0];
+    $('a[data-id="' + firstSeriesId + '"]').parent().toggleClass('active');
     selectSeries(firstSeriesId);
 }
 
@@ -43,7 +59,7 @@ function populateSeriesDropdown() {
 
 function getSeriesDropdownItemHtml(seriesId) {
     var name = series[seriesId];
-    return '<li><a data-id="' + seriesId + '" href="#">' + name + '</a></li>';
+    return '<li><a data-id="' + seriesId + '" href="#" onclick="onSeriesClick(this)">' + name + '</a></li>';
 }
 
 function selectSeries(seriesId) {
