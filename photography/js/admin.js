@@ -41,6 +41,7 @@ function populateSeriesList() {
 }
 
 function updateManageGallery() {
+    hideManageForm();
     var seriesId = getSelectedManageSeriesId();
     clearImageGallery();
     populateImageGallery(seriesId);
