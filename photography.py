@@ -44,7 +44,7 @@ class MainPage(webapp2.RequestHandler):
             'photos': photos
         }
 
-        template = JINJA_ENVIRONMENT.get_template('gallery.html')
+        template = JINJA_ENVIRONMENT.get_template('galleries.html')
         self.response.write(template.render(template_values))
 
 

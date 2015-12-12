@@ -17,7 +17,7 @@ handlers:
   static_dir: images
 
 - url: /.*
-  script: photography.app
+  script: main.app
 
 libraries:
 - name: webapp2
