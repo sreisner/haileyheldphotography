@@ -16,6 +16,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class Series(ndb.Model):
     name = ndb.StringProperty()
+    order = ndb.IntegerProperty()
 
 
 class Photo(ndb.Model):
@@ -29,13 +30,13 @@ class Photo(ndb.Model):
 class MainPage(webapp2.RequestHandler):
     def get(self):
         series_name = self.request.get('series_name')
+        all_series = Series.query().order(Series.order).fetch()
         if series_name:
             photos_query = Photo.query(Photo.series.name == series_name).order(-Photo.uploaded)
         else:
-            series_name = Series.query().fetch(1)[0].name
+            series_name = None
             photos_query = Photo.query().order(-Photo.uploaded)
         photos = photos_query.fetch()
-        all_series = Series.query().fetch()
 
         template_values = {
             'series_name': series_name,
@@ -49,31 +50,39 @@ class MainPage(webapp2.RequestHandler):
 
 class Upload(webapp2.RequestHandler):
   def get(self):
-    self.response.out.write("""
-        <form enctype="multipart/form-data"
-              method="post">
-          <div>
-            <input type="text" name="caption" rows="3" cols="60" />
-          </div>
-          <div><label>Photo:</label></div>
-          <div><input type="file" name="picture"/></div>
-          <div><input type="submit" value="Submit"></div>
-        </form>
-      </body>
-    </html>""")
+    template = JINJA_ENVIRONMENT.get_template('upload.html')
+    error_message = self.request.get('error_message')
+    message = self.request.get('message')
+    all_series = Series.query().order(Series.order).fetch()
+    template_values = {
+        'all_series': all_series,
+        'message': message,
+        'error_message': error_message
+    }
+    self.response.write(template.render(template_values))
 
   def post(self):
-        photo = Photo()
-        photo.series = Series().query().fetch()[0]
-        photo.caption = self.request.get('caption')
+        series_name = self.request.get('series_name')
+        caption = self.request.get('caption')
+        picture = self.request.get('picture')
 
+        series = Series.query(Series.name == series_name)[0]
         picture = self.request.get('picture')
         preview = images.resize(picture, 32, 32)
+
+        photo = Photo()
+        photo.series = series
+        photo.caption = caption
         photo.picture = picture
         photo.preview = preview
         photo.put()
 
-        self.redirect('/upload')
+        self.redirect('/admin')
+
+
+class Admin(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('Admin')
 
 
 class Image(webapp2.RequestHandler):
@@ -89,5 +98,6 @@ class Image(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/upload', Upload),
+    ('/admin', Admin),
     ('/img', Image),
 ], debug=True)

@@ -17,6 +17,7 @@
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="stylesheets/site.css">
+    <link rel="stylesheet" href="stylesheets/gallery.css">
     <link rel="stylesheet" href="stylesheets/index.css">
 
     <!-- Custom Javascript -->
@@ -52,10 +53,19 @@
             <li id="navbar-series" class="dropdown active">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"
                  role="button" aria-haspopup="true" aria-expanded="false">
-                <span>{{ series_name }}</span>
+                <span>{% if series_name %} {{ series_name }} {% else %} all photos {% endif %}</span>
                 <span class="caret"></span>
               </a>
               <ul class="dropdown-menu">
+                <li class="dropdown-header">choose gallery</li>
+                <li role="separator" class="divider"></li>
+                {% if not series_name %}
+                  {% set active = 'active' %}
+                {% else %}
+                  {% set active = '' %}
+                {% endif %}
+                <li class="{{ active }}"><a href="/">all photos</a></li>
+                <li role="separator" class="divider"></li>
                 {% for series in all_series %}
                   {% if series.name == series_name %}
                     {% set active = 'active' %}

@@ -9,7 +9,7 @@ handlers:
 
 - url: /fonts
   static_dir: fonts
-  
+
 - url: /js
   static_dir: js
 
@@ -17,7 +17,7 @@ handlers:
   static_dir: images
 
 - url: /.*
-  script: gallery.app
+  script: photography.app
 
 libraries:
 - name: webapp2

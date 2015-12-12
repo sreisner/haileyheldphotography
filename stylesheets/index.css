@@ -3,10 +3,6 @@ body {
     padding-top: 70px;
 }
 
-#profile-image {
-    width: 100%;
-}
-
 .series-link:hover {
     cursor: pointer;
 }
