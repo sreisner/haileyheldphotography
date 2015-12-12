@@ -1,0 +1,84 @@
+<html>
+<head>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="stylesheets/site.css">
+    <link rel="stylesheet" href="stylesheets/gallery.css">
+    <link rel="stylesheet" href="stylesheets/manage.css">
+
+    <!-- Custom Javascript -->
+    <script src="js/manage.js"></script>
+</head>
+<body onload="onload()">
+    <div class="page-header h2">manage</div>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="row preview-series-row">
+                <div class="col-xs-3">
+                    <select id="preview-series" class="form-control" onchange="onPreviewSeriesChange()">
+                        {% for series in all_series %}
+                            {% if series.name == series_name %}
+                                {% set selected = 'selected' %}
+                            {% else %}
+                                {% set selected = '' %}
+                            {% endif %}
+                            <option {{ selected }} value="{{ series.name }}">{{ series.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="gallery container-fluid">
+                {% for i in range(4) %}
+                <div class="col-sm-6 col-md-3 gallery-column">
+                    {% for photo in photos %}
+                        {% if loop.index0 % 4 == i %}
+                        <div class="image-preview-container" data-caption="{{photo.caption}}" data-id="{{ photo.key.urlsafe() }}" onclick="selectImage(this)">
+                          <img src="/img?is_preview=true&img_id={{photo.key.urlsafe()}}" />
+                          <div class="image-preview-overlay-container">
+                            <div class="image-preview-overlay-rectangle"></div>
+                            <p class="image-preview-overlay-caption">{{photo.caption}}</p>
+                        </div>
+                    </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="manage-form" class="col-xs-4">
+            <div class="row">
+                <div class="col-xs-12">
+                    <select id="edit-series" class="form-control">
+                        {% for series in all_series %}
+                            {% if series.name == series_name %}
+                                {% set active = 'active' %}
+                            {% else %}
+                                {% set active = '' %}
+                            {% endif %}
+                            <option class="{{ active }}" value="{{ series.name }}">{{ series.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="caption">caption</label>
+                    <input id="edit-caption" class="form-control" type="text" name="caption">
+                </div>
+            </div>
+            <div class="row text-right edit-buttons-row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-danger" id="delete-image-button" onclick="deleteClick()">delete</button>
+                    <button type="button" class="btn btn-primary" id="save-image-button" onclick="updateClick()">update</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

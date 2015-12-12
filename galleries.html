@@ -94,7 +94,7 @@
             {% for photo in photos %}
               {% if loop.index0 % 4 == i %}
                 <div class="image-preview-container" data-caption="{{photo.caption}}" onclick="showImageModal(this)">
-                  <img src="/img?img_id={{photo.key.urlsafe()}}" />
+                  <img src="/img?is_preview=true&img_id={{photo.key.urlsafe()}}" />
                   <div class="image-preview-overlay-container">
                     <div class="image-preview-overlay-rectangle"></div>
                     <p class="image-preview-overlay-caption">{{photo.caption}}</p>

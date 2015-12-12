@@ -17,3 +17,7 @@
 #delete-image-button {
     float: left;
 }
+
+iframe {
+    min-height: 500px;
+}
