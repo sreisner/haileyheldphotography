@@ -61,6 +61,9 @@ class About(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('about.html')
         self.response.write(template.render(template_values))
 
+    def post(self):
+        self.redirect("/about")
+
 
 class Upload(webapp2.RequestHandler):
     def get(self):
