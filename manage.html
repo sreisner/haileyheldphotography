@@ -55,7 +55,8 @@
         <div id="manage-form" class="col-xs-4">
             <div class="row">
                 <div class="col-xs-12">
-                    <select id="edit-series" class="form-control">
+                    <label for="series">series</label>
+                    <select id="edit-series" name="series" class="form-control">
                         {% for series in all_series %}
                             {% if series.name == series_name %}
                                 {% set active = 'active' %}
