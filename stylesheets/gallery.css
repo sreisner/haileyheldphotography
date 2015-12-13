@@ -46,6 +46,14 @@
     text-overflow: ellipsis;
 }
 
+.modal-content {
+    border-radius: 0px;
+}
+
+.modal-body {
+    padding: 0px;
+}
+
 .modal-body > img {
     width: 100%;
 }
