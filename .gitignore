@@ -1,3 +1,4 @@
 external_includes/
 photography/images/*
 error_log
+*.pyc
