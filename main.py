@@ -52,6 +52,16 @@ class MainPage(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 
+class About(webapp2.RequestHandler):
+    def get(self):
+        template_values = {
+            'all_series': get_all_series()
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('about.html')
+        self.response.write(template.render(template_values))
+
+
 class Upload(webapp2.RequestHandler):
     def get(self):
         message = self.request.get('message')
@@ -169,6 +179,7 @@ class Image(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
+    ('/about', About),
     ('/upload', Upload),
     ('/manage', Manage),
     ('/admin', Admin),

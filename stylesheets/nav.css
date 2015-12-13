@@ -11,3 +11,16 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+.navbar-default {
+    box-shadow: none;
+    background-image: none;
+    background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
+    box-shadow: none;
+    background-image: none;
+    background-color: #FFFFFF;
+    border-bottom: 5px solid #DDDDDD;
+}
