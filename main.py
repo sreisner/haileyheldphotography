@@ -68,6 +68,7 @@ class Image(webapp2.RequestHandler):
         is_preview = self.request.get('is_preview')
 
         self.response.headers['Content-Type'] = 'image/jpg'
+        self.response.headers['Cache-Control'] = 'max-age=2592000, public'
         if(is_preview and photo.preview):
             self.response.out.write(photo.preview)
         if photo.picture:
