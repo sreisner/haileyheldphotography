@@ -96,7 +96,7 @@ class Image(webapp2.RequestHandler):
         except Exception, e:
             query_params = urllib.urlencode({'error_message': e})
 
-        self.redirect('/upload?%s' % query_params)
+        self.redirect('/admin/upload?%s' % query_params)
 
     def validate_post(self, request):
         series_name = self.request.get('series_name')

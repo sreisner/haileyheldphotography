@@ -5,7 +5,7 @@ function onload() {
         row.removeClass('new');
 
         $.ajax({
-            url: '/messages?messageId=' + messageId,
+            url: '/admin/messages?messageId=' + messageId,
             method: 'PUT'
         });
         
@@ -46,7 +46,7 @@ function onDeleteClick() {
             var row = $(checkbox).parent().parent();
             var messageId = row.attr('data-message-id');
             $.ajax({
-                url: '/messages?messageId=' + messageId,
+                url: '/admin/messages?messageId=' + messageId,
                 method: 'DELETE'
             });
             row.remove();
