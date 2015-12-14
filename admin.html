@@ -1,19 +1,19 @@
 <html>
     <head>
         <!-- JQuery -->
-        <script src="js/jquery/jquery-2.1.4.min.js"></script>
+        <script src="/js/jquery/jquery-2.1.4.min.js"></script>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap.min.css">
-        <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap-theme.min.css">
-        <script src="js/bootstrap/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/bootstrap/bootstrap-theme.min.css">
+        <script src="/js/bootstrap/bootstrap.min.js"></script>
 
         <!-- Custom Styles -->
-        <link rel="stylesheet" href="stylesheets/site.css">
-        <link rel="stylesheet" href="stylesheets/admin.css">
+        <link rel="stylesheet" href="/stylesheets/site.css">
+        <link rel="stylesheet" href="/stylesheets/admin.css">
 
         <!-- Custom Javascript -->
-        <script src="js/admin.js"></script>
+        <script src="/js/admin.js"></script>
 
         <!-- Google Analytics -->
         <script>
@@ -30,8 +30,12 @@
         <div class="row" style="margin-left: 0px; margin-right: 0px;">
             <div class="page-header h1">
                 <div class="text-center">
-                    <span style="float: left; margin-left: 10px;"><a href="/">Home</a></span>
+                    <span style="float: left; margin-left: 10px; font-size: 0.5em;"><a href="/">Home</a></span>
                     <span>the admin panel of <strong>doom</strong></span>
+                    <span>
+                        <span style="float: right; margin-right: 10px; font-size: 0.5em;"><a href="{{ logout_url }}">Logout</a></span>
+                        <span style="float: right; margin-right: 10px; font-size: 0.5em;">Hello, <strong>{{ user }}</strong></span>
+                    </span>
                 </div>
             </div>
         </div>
@@ -45,13 +49,13 @@
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="upload">
-                    <iframe src="/upload" seamless="seamless" scrolling="no" frameborder="0" style="width: 100%" onload="resizeIframe(this)"></iframe>
+                    <iframe src="/admin/upload" seamless="seamless" scrolling="no" frameborder="0" style="width: 100%" onload="resizeIframe(this)"></iframe>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="manage">
-                    <iframe src="/manage" seamless="seamless" scrolling="no" frameborder="0" style="width: 100%" onload="resizeIframe(this)"></iframe>
+                    <iframe src="/admin/manage" seamless="seamless" scrolling="no" frameborder="0" style="width: 100%" onload="resizeIframe(this)"></iframe>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="messages">
-                    <iframe src="/messages" seamless="seamless" scrolling="no" frameborder="0" style="width: 100%" onload="resizeIframe(this)"></iframe>
+                    <iframe src="/admin/messages" seamless="seamless" scrolling="no" frameborder="0" style="width: 100%" onload="resizeIframe(this)"></iframe>
                 </div>
             </div>
         </div>

@@ -3,8 +3,22 @@ body {
 }
 
 .navbar-brand {
-    font-family: Nickainley;
-    font-size: 3em;
+    font-family: Nickainley; 
+    font-size: 1em;
+}
+
+@media only screen and (min-width : 480px) {
+    .navbar-brand {
+        font-family: Nickainley; 
+        font-size: 2em;
+    }
+}
+
+@media only screen and (min-width : 768px) {
+    .navbar-brand {
+        font-family: Nickainley;
+        font-size: 3em;
+    }
 }
 
 .navbar-icon {
