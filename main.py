@@ -1,6 +1,9 @@
 import os
 import urllib
-import pdb
+import cgi
+import logging
+import smtplib
+from email.mime.text import MIMEText
 
 from google.appengine.api import images
 from google.appengine.api import users
@@ -14,6 +17,12 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
+
+EMAIL_TEMPLATE = '''
+    <b>name</b>:  %s
+    <b>email</b>:  %s
+    <b>comment</b>:<br /><br />%s
+'''
 
 
 def get_all_series():
@@ -31,6 +40,14 @@ class Photo(ndb.Model):
     preview = ndb.BlobProperty()
     picture = ndb.BlobProperty()
     uploaded = ndb.DateTimeProperty(auto_now_add=True)
+
+
+class Message(ndb.Model):
+    name = ndb.StringProperty(indexed=False)
+    email = ndb.StringProperty(indexed=False)
+    comment = ndb.StringProperty(indexed=False)
+    seen = ndb.BooleanProperty()
+    received = ndb.DateTimeProperty(auto_now_add=True)
 
 
 class MainPage(webapp2.RequestHandler):
@@ -54,15 +71,28 @@ class MainPage(webapp2.RequestHandler):
 
 class About(webapp2.RequestHandler):
     def get(self):
+        thanks = self.request.get('thanks')
         template_values = {
-            'all_series': get_all_series()
+            'all_series': get_all_series(),
+            'thanks': thanks
         }
 
         template = JINJA_ENVIRONMENT.get_template('about.html')
         self.response.write(template.render(template_values))
 
     def post(self):
-        self.redirect("/about")
+        name = cgi.escape(self.request.get('name'))
+        email = cgi.escape(self.request.get('email'))
+        comment = cgi.escape(self.request.get('comment'))
+        if name and email and comment:
+            message = Message()
+            message.name = name
+            message.email = email
+            message.comment = comment
+            message.seen = False
+            message.put()
+        query_params = urllib.urlencode({ 'thanks': 'Message sent.  Thanks!' })
+        self.redirect("/about?%s" % query_params)
 
 
 class Upload(webapp2.RequestHandler):
@@ -98,6 +128,39 @@ class Manage(webapp2.RequestHandler):
 
         template = JINJA_ENVIRONMENT.get_template('manage.html')
         self.response.write(template.render(template_values))
+
+
+class Messages(webapp2.RequestHandler):
+    def get(self):
+        messageId = self.request.get('messageId')
+        message = None
+        if messageId:
+            message_key = ndb.Key(urlsafe=messageId)
+            message = message_key.get()
+
+        all_messages = Message.query().fetch()
+
+        template_values = {
+            'all_messages': all_messages,
+            'message': message
+        }
+
+        template = JINJA_ENVIRONMENT.get_template('messages.html')
+        self.response.write(template.render(template_values))
+
+    def delete(self):
+        messageId = self.request.get('messageId')
+        if messageId:
+            message_key = ndb.Key(urlsafe=messageId)
+            message_key.delete()
+
+    def put(self):
+        messageId = self.request.get('messageId')
+        if messageId:
+            message_key = ndb.Key(urlsafe=messageId)
+            message = message_key.get()
+            message.seen = True
+            message.put()
 
 class Admin(webapp2.RequestHandler):
     def get(self):
@@ -185,6 +248,7 @@ app = webapp2.WSGIApplication([
     ('/about', About),
     ('/upload', Upload),
     ('/manage', Manage),
+    ('/messages', Messages),
     ('/admin', Admin),
-    ('/img', Image),
+    ('/img', Image)
 ], debug=True)

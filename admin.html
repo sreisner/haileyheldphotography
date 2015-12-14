@@ -1,12 +1,12 @@
 <html>
     <head>
         <!-- JQuery -->
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="js/jquery/jquery-2.1.4.min.js"></script>
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap-theme.min.css">
+        <script src="js/bootstrap/bootstrap.min.js"></script>
 
         <!-- Custom Styles -->
         <link rel="stylesheet" href="stylesheets/site.css">
@@ -40,6 +40,7 @@
             <ul class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="active"><a href="#upload" aria-controls="upload" role="tab" data-toggle="tab">upload</a></li>
                 <li role="presentation"><a href="#manage" aria-controls="manage" role="tab" data-toggle="tab">manage</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">messages</a></li>
             </ul>
 
             <div class="tab-content">
@@ -48,6 +49,9 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="manage">
                     <iframe src="/manage" seamless="seamless" scrolling="no" frameborder="0" style="width: 100%" onload="resizeIframe(this)"></iframe>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">
+                    <iframe src="/messages" seamless="seamless" scrolling="no" frameborder="0" style="width: 100%" onload="resizeIframe(this)"></iframe>
                 </div>
             </div>
         </div>

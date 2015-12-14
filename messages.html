@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <!-- JQuery -->
+        <script src="js/jquery/jquery-2.1.4.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap.min.css">
+        <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap-theme.min.css">
+        <script src="js/bootstrap/bootstrap.min.js"></script>
+
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="stylesheets/site.css">
+        <link rel="stylesheet" href="stylesheets/messages.css">
+
+        <!-- Custom Javascript -->
+        <script src="js/messages.js"></script>
+    </head>
+    <body onload="onload()">
+        <div class="page-header h2">messages</div>
+        <div class="container-fluid">
+            <button id="delete-button" class="btn btn-danger" disabled type="button" onclick="onDeleteClick()">delete</button>
+            <table class="table table-hover">
+                <tr>
+                    <th></th>
+                    <th>received</th>
+                    <th>name</th>
+                    <th>email</th>
+                    <th>comment</th>
+                </tr>
+                {% for message in all_messages %}
+                    {% if not message.seen %}
+                        {% set new = 'new' %}
+                    {% else %}
+                        {% set new = '' %}
+                    {% endif %}
+                    <tr class="{{ new }}" data-message-id="{{ message.key.urlsafe() }}">
+                        <td><input type="checkbox"></td>
+                        <td class="clickable">{{ message.received.strftime('%A, %B %d, %Y @ %I:%M%p') }}</td>
+                        <td class="clickable">{{ message.name }}</td>
+                        <td class="clickable">{{ message.email }}</td>
+                        <td class="clickable"><div class="comment-preview">{{ message.comment }}</div></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div id="messageModal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Message!</h4>
+                    </div>
+                    <div class="modal-body"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
