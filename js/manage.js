@@ -56,5 +56,5 @@ function updatePhoto(id, series_name, caption) {
 
 function onPreviewSeriesChange() {
     var series_name = $('#preview-series').val();
-    window.location.assign('/manage?series_name=' + series_name);
+    window.location.assign('/admin/manage?series_name=' + series_name);
 }
