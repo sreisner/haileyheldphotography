@@ -76,23 +76,24 @@ class Image(webapp2.RequestHandler):
 
     def post(self):
         try:
-            self.validate_post(self.request)
+            if users.is_current_user_admin():
+                self.validate_post(self.request)
 
-            series_name = self.request.get('series_name')
-            caption = self.request.get('caption')
-            picture = self.request.get('picture')
+                series_name = self.request.get('series_name')
+                caption = self.request.get('caption')
+                picture = self.request.get('picture')
 
-            series = Series.query(Series.name == series_name).fetch()[0]
-            preview = images.resize(picture, 400)
+                series = Series.query(Series.name == series_name).fetch()[0]
+                preview = images.resize(picture, 400)
 
-            photo = Photo()
-            photo.series = series
-            photo.caption = caption
-            photo.picture = picture
-            photo.preview = preview
-            photo.put()
+                photo = Photo()
+                photo.series = series
+                photo.caption = caption
+                photo.picture = picture
+                photo.preview = preview
+                photo.put()
 
-            query_params = urllib.urlencode({'message': 'Image uploaded successfully.'})
+                query_params = urllib.urlencode({'message': 'Image uploaded successfully.'})
         except Exception, e:
             query_params = urllib.urlencode({'error_message': e})
 
@@ -114,22 +115,23 @@ class Image(webapp2.RequestHandler):
 
     def delete(self):
         img_id = self.request.get('img_id')
-        if img_id:
+        if img_id and users.is_current_user_admin():
             photo_key = ndb.Key(urlsafe=img_id)
             photo_key.delete()
 
     def put(self):
-        img_id = self.request.get('img_id')
-        series_name = self.request.get('series_name')
-        caption = self.request.get('caption')
+        if users.is_current_user_admin():
+            img_id = self.request.get('img_id')
+            series_name = self.request.get('series_name')
+            caption = self.request.get('caption')
 
-        series = Series.query(Series.name == series_name).fetch()[0]
+            series = Series.query(Series.name == series_name).fetch()[0]
 
-        photo_key = ndb.Key(urlsafe=img_id)
-        photo = photo_key.get()
-        photo.series = series
-        photo.caption = caption
-        photo.put()
+            photo_key = ndb.Key(urlsafe=img_id)
+            photo = photo_key.get()
+            photo.series = series
+            photo.caption = caption
+            photo.put()
 
 
 app = webapp2.WSGIApplication([
