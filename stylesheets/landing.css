@@ -1,21 +1,33 @@
 @media (max-width : 900px) {
     .logo-sub {
+        top: 0px;
         position: relative;
         margin: 0 auto;
         max-width: 400px;
+    }
+
+    #background {
+        top: -100px;
+        right: -400px;
     }
 }
 
 @media (min-width : 900px) {
     .logo-sub {
+        top: 100px;
         position: absolute;
         right: 200px;
         width: 500px;
     }
+
+    #background {
+        top: 0;
+        right: 0;
+    }
 }
 
 #background {
-    right: 0;
+    position: absolute;
     min-width: 100%;
     min-height: 100vh;
 }
@@ -26,14 +38,4 @@
 
 .logo-container {
     width: 100%;
-}
-
-.logo-sub {
-    top: 100px;
-}
-
-#background {
-    position: absolute;
-    top: 0;
-    
 }

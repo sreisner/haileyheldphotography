@@ -3,8 +3,8 @@ body {
 }
 
 .navbar-brand {
-    font-family: Nickainley; 
-    font-size: 1em;
+    font-family: Halion;
+    font-weight: lighter;
 }
 
 @media only screen and (max-width : 768px) {
@@ -15,19 +15,17 @@ body {
 
 @media only screen and (min-width : 480px) {
     .navbar-brand {
-        font-family: Nickainley; 
-        font-size: 2em;
+        font-size: 1em;
     }
 }
 
 @media only screen and (min-width : 768px) {
     .navbar-brand {
-        font-family: Nickainley;
-        font-size: 3em;
+        font-size: 2em;
     }
 
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
-        border-bottom: 5px solid #DDDDDD;
+        border-bottom: 5px solid #666666;
     }
 }
 
@@ -49,6 +47,10 @@ body {
     box-shadow: none;
     background-image: none;
     background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand {
+    color: #000000;
 }
 
 .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {

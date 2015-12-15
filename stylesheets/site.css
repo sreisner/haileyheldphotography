@@ -1,14 +1,9 @@
 @font-face {
-    font-family: Alcubierre;
-    src: url("../fonts/Alcubierre.otf") format("opentype");
-}
-
-@font-face {
-    font-family: Nickainley;
-    src: url("../fonts/Nickainley.otf") format("opentype");
+    font-family: Halion;
+    src: url("../fonts/Halion.otf") format("opentype");
 }
 
 body {
-    font-family: 'Alcubierre', sans-serif;
+    font-family: 'Halion', sans-serif;
     background-color: #FFFFFF;
 }
