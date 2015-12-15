@@ -6,6 +6,7 @@ body {
     font-family: Nickainley; 
     font-size: 1em;
 }
+
 @media only screen and (max-width : 768px) {
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
         text-decoration: underline;
