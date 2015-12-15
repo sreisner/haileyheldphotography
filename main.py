@@ -11,7 +11,14 @@ import webapp2
 from model import *
 from constants import *
 
-class MainPage(webapp2.RequestHandler):
+
+class LandingPage(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('landing.html')
+        self.response.write(template.render({}))
+
+
+class Gallery(webapp2.RequestHandler):
     def get(self):
         series_name = self.request.get('series_name')
 
@@ -135,7 +142,8 @@ class Image(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainPage),
+    ('/', LandingPage),
+    ('/gallery', Gallery),
     ('/about', About),
     ('/img', Image),
 ], debug=True)
