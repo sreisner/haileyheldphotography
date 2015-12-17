@@ -2,9 +2,16 @@ body {
     padding-top: 70px;
 }
 
-.navbar-brand {
-    font-family: Halion;
-    font-weight: lighter;
+.name {
+    letter-spacing: 1px;
+    padding-right: 10px;
+}
+
+.photography-label {
+    padding-left: 10px;
+    font-style: italic;
+    letter-spacing: 10px;
+    font-size: 0.8em;
 }
 
 @media only screen and (max-width : 768px) {

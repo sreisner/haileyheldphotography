@@ -10,6 +10,7 @@
 
     <!-- JQuery -->
     <script src="js/jquery/jquery-2.1.4.min.js"></script>
+    <script src="js/jquery/jquery-ui.min.js"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap.min.css">
@@ -21,6 +22,7 @@
     <link rel="stylesheet" href="stylesheets/landing.css">
 
     <!-- Custom Javascript -->
+    <script src="js/landing.js">
 
     <!-- Google Analytics -->
     <script>
@@ -33,12 +35,23 @@
       ga('send', 'pageview');
     </script>
   </head>
-  <body>
-    <img id="background" src="images/landing.jpg" />
-    <div class="logo-container">
-      <div class="logo-sub">
+  <body onload="onload()">
+    <section id="home" name="home" class="section-full">
+      <img id="background" src="images/landing.jpg" />
+      <div class="menu-container">
         <img id="logo" src="images/logo.png" />
+        <ul>
+          <li><a data-section="#gallery" href="#">gallery</a></li>
+          <li><a data-section="#about" href="#">about</a></li>
+          <li><a data-section="#contact" href="#">contact</a></li>
+        </ul>
       </div>
-    </div>
+    </section>
+    <section id="about" class="section-full">
+      
+    </section>
+    <section id="contact" class="section-full">
+
+    </section>
   </body>
 </html>
