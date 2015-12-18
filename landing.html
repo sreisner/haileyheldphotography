@@ -13,16 +13,19 @@
     <script src="js/jquery/jquery-ui.min.js"></script>
 
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="stylesheets/bootstrap/bootstrap-theme.min.css">
-    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     
     <!-- Custom Styles -->
     <link rel="stylesheet" href="stylesheets/site.css">
+    <link rel="stylesheet" href="stylesheets/nav.css">
     <link rel="stylesheet" href="stylesheets/landing.css">
+    <link rel="stylesheet" href="stylesheets/gallery.css">
 
     <!-- Custom Javascript -->
-    <script src="js/landing.js">
+    <script src="js/landing.js"></script>
+    <script src="js/gallery.js"></script>
 
     <!-- Google Analytics -->
     <script>
@@ -36,21 +39,96 @@
     </script>
   </head>
   <body onload="onload()">
-    <section id="home" name="home" class="section-full">
+    <div class="navbar navbar-default navbar-fixed-top" style="display: none;">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+              data-target="#navbarHeaderCollapse">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand section-link" data-section="#home"><span class="name">Hailey Held</span> | <span class="photography-label">photography</span></a>
+        </div>
+        <div id="navbarHeaderCollapse" class="navbar-collapse collapse navbar-right">
+          <ul class="nav navbar-nav">
+            <li>
+              <a class="navbar-link section-link" data-section="#home-section"><i class="fa fa-home fa-lg"></i></a>
+            </li>
+            <li>
+              <a class="navbar-link section-link" data-section="#gallery-section">gallery</a>
+            </li>
+            <li>
+              <a class="navbar-link section-link" data-section="#about-section">about</a>
+            </li>
+            <li>
+              <a class="navbar-link section-link" data-section="#contact-section">contact</a>
+            </li>
+            <li class="social-links">
+              <a href="https://www.instagram.com/haileyheld/"><i class="fa fa-instagram fa-lg"></i></a>
+              <a href="https://www.facebook.com/haileyheldphotography/"><i class="fa fa-facebook-square fa-lg"></i></a>
+              <a href="https://www.flickr.com/photos/haileyheld"><i class="fa fa-flickr fa-lg"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <section id="home-section" class="section-full">
       <img id="background" src="images/landing.jpg" />
       <div class="menu-container">
         <img id="logo" src="images/logo.png" />
         <ul>
-          <li><a data-section="#gallery" href="#">gallery</a></li>
-          <li><a data-section="#about" href="#">about</a></li>
-          <li><a data-section="#contact" href="#">contact</a></li>
+          <li><a class="section-link" data-section="#gallery-section">gallery</a></li>
+          <li><a class="section-link" data-section="#about-section">about</a></li>
+          <li><a class="section-link" data-section="#contact-section">contact</a></li>
+          <hr />
+          <li class="menu-social">
+            <a href="https://www.instagram.com/haileyheld/"><img src="images/instagram.png" /></a>
+            <a href="https://www.facebook.com/haileyheldphotography/"><img src="images/facebook.png" /></a>
+            <a href="https://www.flickr.com/photos/haileyheld"><img src="images/flickr.png" /></a>
+          </li>
         </ul>
       </div>
     </section>
-    <section id="about" class="section-full">
+    <section id="gallery-section">
+      <div id="gallery">
+        <div class="container-fluid">
+          {% for i in range(4) %}
+            <div class="col-sm-6 col-md-3 gallery-column">
+              {% for photo in photos %}
+                {% if loop.index0 % 4 == i %}
+                  <div class="image-preview-container" data-photo-id="{{ photo.key.urlsafe() }}" data-caption="{{photo.caption}}" onclick="showImageModal(this)">
+                    <img src="/img?is_preview=true&img_id={{photo.key.urlsafe()}}" />
+                    <div class="image-preview-overlay-container">
+                      <div class="image-preview-overlay-rectangle"></div>
+                      <p class="image-preview-overlay-caption">{{photo.caption}}</p>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div id="imageModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="about-section" class="section-full">
       
     </section>
-    <section id="contact" class="section-full">
+    <section id="contact-section" class="section-full">
 
     </section>
   </body>

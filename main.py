@@ -14,8 +14,14 @@ from constants import *
 
 class LandingPage(webapp2.RequestHandler):
     def get(self):
+        photos_query = Photo.query().order(-Photo.uploaded)
+
+        template_values = {
+            'all_series': get_all_series(),
+            'photos': photos_query.fetch()
+        }
         template = JINJA_ENVIRONMENT.get_template('landing.html')
-        self.response.write(template.render({}))
+        self.response.write(template.render(template_values))
 
 
 class Gallery(webapp2.RequestHandler):

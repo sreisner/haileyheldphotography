@@ -7,7 +7,7 @@
     }
 
     #background {
-        top: -100px;
+        top: -75px;
         right: -400px;
     }
 }
@@ -31,18 +31,26 @@ section {
     width: 100%;
 }
 
+section:not(:first-child) {
+    padding-top: 70px;
+}
+
 #background {
     position: absolute;
     min-width: 100%;
     min-height: 100%;
 }
 
-#about {
-    background-color: white;
+#gallery-section {
+    background-color: #FFFFFF;
 }
 
-#contact {
-    background-color: black;
+#about-section {
+    background-color: #FF0000;
+}
+
+#contact-section {
+    background-color: #00FF00;
 }
 
 .section-full {
@@ -66,12 +74,24 @@ section {
 
 .menu-container > ul > li > a {
     text-decoration: none;
-    color: #AAAAAA;
+    color: #666666;
     font-size: 1.5em;
-    transition: font-size 0.25s;
+    transition: color 1s;
 }
 
 .menu-container > ul > li > a:hover {
-    font-size: 2em;
-    color: #666666;
+    color: #000000;
+}
+
+.menu-social {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 50%;
+}
+.menu-social > a {
+    color: #AAAAAA !important;
+}
+
+.section-link:hover {
+    cursor: pointer;
 }
