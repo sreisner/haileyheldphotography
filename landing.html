@@ -94,15 +94,20 @@
     </section>
     <section id="gallery-section">
       <div id="gallery">
-        <select class="form-control">
-          <option value="all-photos">All Photos</option>
-          <option value="portraits">Portraits</option>
-          <option value="senior-photos">Senior Photos</option>
-          <option value="conceptual">Conceptual</option>
-        </select>
+        <div class="section-header">
+          <div class="section-label">gallery</div>
+          <select class="form-control gallery-select">
+            <option value="all-photos">all photos</option>
+            <option value="portraits">portraits</option>
+            <option value="senior-photos">senior photos</option>
+            <option value="conceptual">conceptual</option>
+            <option value="adventure">adventure</option>
+            <option value="latemattenoir">@lamattenoir</option>
+          </select>
+        </div>
         <div class="container-fluid">
           {% for i in range(4) %}
-            <div class="col-sm-6 col-md-3 gallery-column">
+            <div class="col-sm-3 gallery-column">
               {% for photo in photos %}
                 {% if loop.index0 % 4 == i %}
                   <div class="image-preview-container" data-photo-id="{{ photo.key.urlsafe() }}" data-caption="{{photo.caption}}" onclick="showImageModal(this)">
@@ -132,10 +137,14 @@
       </div>
     </section>
     <section id="about-section" class="section-full">
-      
+      <div class="section-header">
+        <div class="section-label">about</div>
+      </div>
     </section>
     <section id="contact-section" class="section-full">
-
+      <div class="section-header">
+        <div class="section-label">contact</div>
+      </div>
     </section>
   </body>
 </html>

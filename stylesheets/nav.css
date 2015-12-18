@@ -23,12 +23,14 @@
 }
 
 @media only screen and (min-width : 768px) {
-    .navbar-brand {
-        font-size: 2em;
-    }
-
     .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
         border-bottom: 5px solid #666666;
+    }
+}
+
+@media only screen and (min-width : 900px) {
+    .navbar-brand {
+        font-size: 2em;
     }
 }
 

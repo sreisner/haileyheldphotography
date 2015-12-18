@@ -13,6 +13,7 @@ function onload() {
 
 function onSectionLinkClick(event) {
     var section = $(event.currentTarget).attr('data-section');
+    $('.navbar-toggle').click();
     scrollToSection(section);
 }
 
