@@ -49,7 +49,7 @@
              <span class="icon-bar"></span>
              <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand section-link" data-section="#home"><span class="name">Hailey Held</span> | <span class="photography-label">photography</span></a>
+          <a class="navbar-brand section-link" data-section="#home-section"><span class="name">Hailey Held</span> | <span class="photography-label">photography</span></a>
         </div>
         <div id="navbarHeaderCollapse" class="navbar-collapse collapse navbar-right">
           <ul class="nav navbar-nav">
@@ -94,6 +94,12 @@
     </section>
     <section id="gallery-section">
       <div id="gallery">
+        <select class="form-control">
+          <option value="all-photos">All Photos</option>
+          <option value="portraits">Portraits</option>
+          <option value="senior-photos">Senior Photos</option>
+          <option value="conceptual">Conceptual</option>
+        </select>
         <div class="container-fluid">
           {% for i in range(4) %}
             <div class="col-sm-6 col-md-3 gallery-column">

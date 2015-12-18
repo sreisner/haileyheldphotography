@@ -2,41 +2,43 @@ var previousScrollPosition;
 var scrolling;
 
 function onload() {
-    initializeSectionClickListener();
-    initializeNavBar();
-
     previousScrollPosition = 0;
     scrolling = false;
+
+    $('.section-link').on('click', onSectionLinkClick);
+    $(window).scroll(handleNavbarDisplay);
+    handleNavbarDisplay();
+
 }
 
-function initializeSectionClickListener() {
-    $('.section-link').on('click', function() {
-        if(!scrolling) {
-            scrolling = true
-            var section = $($(this).attr('data-section'));
-            $("html, body").animate({
-                scrollTop: section.offset().top
-            }, 500, 'easeOutQuint', function() {
-                scrolling = false
-            });
-        }
-    });
+function onSectionLinkClick(event) {
+    var section = $(event.currentTarget).attr('data-section');
+    scrollToSection(section);
 }
 
-function initializeNavBar() {
-    $(window).scroll(function() {
-        var currentScrollPosition = $(window).scrollTop();
+function scrollToSection(section) {
+    if(!scrolling) {
+        scrolling = true
+        $("html, body").animate({
+            scrollTop: $(section).offset().top
+        }, 500, 'easeOutQuint', function() {
+            scrolling = false
+        });
+    }
+}
 
-        var toggleMenuThreshold = $('.menu-container').offset().top + $('.menu-container').height()
-        var justWentBelowThreshold = previousScrollPosition < toggleMenuThreshold && currentScrollPosition >= toggleMenuThreshold;
-        var justWentAboveThreshold = previousScrollPosition >= toggleMenuThreshold && currentScrollPosition < toggleMenuThreshold;
+function handleNavbarDisplay() {
+    var currentScrollPosition = $(window).scrollTop();
 
-        if (justWentAboveThreshold) { 
-            $('.navbar').fadeOut(250);
-        } else if(justWentBelowThreshold) {
-            $('.navbar').fadeIn(250);
-        }
+    var toggleMenuThreshold = $('.menu-container').offset().top + $('.menu-container').height();
+    var justWentBelowThreshold = previousScrollPosition < toggleMenuThreshold && currentScrollPosition >= toggleMenuThreshold;
+    var justWentAboveThreshold = previousScrollPosition >= toggleMenuThreshold && currentScrollPosition < toggleMenuThreshold;
 
-        previousScrollPosition = currentScrollPosition;
-    });
+    if (justWentAboveThreshold) { 
+        $('.navbar').fadeOut(250);
+    } else if(justWentBelowThreshold) {
+        $('.navbar').fadeIn(250);
+    }
+
+    previousScrollPosition = currentScrollPosition;
 }
