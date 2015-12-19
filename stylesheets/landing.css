@@ -1,18 +1,27 @@
-@media (max-width : 900px) {
-    .menu-container {
-        position: relative;
-        top: 0px;
-        margin: 0 auto;
-        max-width: 400px;
+/* xs devices and above */
+@media (min-width: 520px) {
+    .section-header {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin: 15px auto;
     }
 
-    #background {
-        top: -75px;
-        right: -400px;
+    .section-label {
+        font-size: 2em;
+        align-self: center;
+    }
+
+    .gallery-select {
+        position: absolute;
+        right: 15px;
+        width: 200px;
     }
 }
 
-@media (min-width : 900px) {
+/* md devices and above */
+@media (min-width : 992px) {
     .menu-container {
         position: absolute;
         top: 100px;
@@ -26,15 +35,42 @@
     }
 }
 
-@media (max-width : 900px) {
-    .section-label {
-        font-size: 1.5em;
+/* sm devices and below */
+@media (max-width: 991px) {
+    .menu-container {
+        position: relative;
+        top: 0px;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    #background {
+        top: -75px;
+        right: -400px;
     }
 }
 
-@media (min-width : 900px) {
+/* xxs devices and below a*/
+@media (max-width : 519px) {
+    .section-header {
+        display: block;
+        width: 100%;
+        margin: 15px auto;
+    }
+
     .section-label {
-        font-size: 2em;
+        font-size: 1.5em;
+        text-align: center;
+    }
+
+    .gallery-select {
+        margin: 0 auto;
+        width: 50%;
+    }
+
+    #background {
+        top: -350px;
+        right: -400px;
     }
 }
 
@@ -42,6 +78,7 @@ section {
     position: relative;
     width: 100%;
     overflow: hidden;
+    padding-bottom: 10px;
 }
 
 section:not(:first-child) {
@@ -59,15 +96,15 @@ section:not(:first-child) {
 }
 
 #about-section {
-    background-color: #FF0000;
+    background-color: #DDDDDD;
 }
 
 #contact-section {
-    background-color: #00FF00;
+    background-color: #AAAAAA;
 }
 
 .section-full {
-    height: 100vh;
+    min-height: 100vh;
 }
 
 #logo {
@@ -110,20 +147,8 @@ section:not(:first-child) {
     cursor: pointer;
 }
 
-.section-header {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 15px auto;
-}
-
-.section-label {
-    align-self: center;
-}
-
-.gallery-select {
-    position: absolute;
-    right: 15px;
-    width: 200px;
+.coming-soon {
+    font-size: 2em;
+    font-style: italic;
+    text-align: center;
 }

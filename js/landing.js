@@ -13,7 +13,9 @@ function onload() {
 
 function onSectionLinkClick(event) {
     var section = $(event.currentTarget).attr('data-section');
-    $('.navbar-toggle').click();
+    if($('.navbar-toggle').attr('aria-expanded') === 'true') {
+        $('.navbar-toggle').click();
+    }
     scrollToSection(section);
 }
 
