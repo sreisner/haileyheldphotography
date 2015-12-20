@@ -69,8 +69,8 @@
     }
 
     #background {
-        top: -350px;
-        right: -400px;
+        top: 0px;
+        right: -600px;
     }
 }
 
@@ -107,6 +107,10 @@ section:not(:first-child) {
     min-height: 100vh;
 }
 
+.section-half {
+    height: 50vh;
+}
+
 #logo {
     width: 100%;
     margin-bottom: 1em;
@@ -139,8 +143,9 @@ section:not(:first-child) {
     width: 50%;
 }
 
-.menu-social > a {
-    color: #AAAAAA !important;
+.menu-social > a > img {
+    width: 48px;
+    height: 48px;
 }
 
 .section-link:hover {
@@ -151,4 +156,8 @@ section:not(:first-child) {
     font-size: 2em;
     font-style: italic;
     text-align: center;
+}
+
+#about-image {
+    width: 100%;
 }
