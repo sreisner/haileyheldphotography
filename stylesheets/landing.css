@@ -3,13 +3,12 @@
     .section-header {
         display: inline-flex;
         align-items: center;
-        justify-content: center;
-        width: 100%;
-        margin: 15px auto;
+        justify-content: flex-start;
     }
 
     .section-label {
         font-size: 2em;
+        margin-left: 15px;
         align-self: center;
     }
 
@@ -33,29 +32,33 @@
         top: 0;
         right: 0;
     }
+
+    .about-contact-panel {
+        width: 40%;
+    }
+
+    #about-background {
+        left: 30%;
+        opacity: 0.5;
+    }
 }
 
 /* sm devices and below */
 @media (max-width: 991px) {
-    .menu-container {
-        position: relative;
-        top: 0px;
-        margin: 0 auto;
-        max-width: 400px;
+    .about-contact-panel {
+        width: 100%;
     }
 
-    #background {
-        top: -75px;
-        right: -400px;
+    #about-background {
+        left: -50%;
+        opacity: 0.25;
     }
 }
 
-/* xxs devices and below a*/
+/* xxs devices and below */
 @media (max-width : 519px) {
     .section-header {
         display: block;
-        width: 100%;
-        margin: 15px auto;
     }
 
     .section-label {
@@ -73,16 +76,18 @@
         right: -600px;
     }
 }
+   
+.about-contact-panel {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+} 
 
 section {
     position: relative;
     width: 100%;
     overflow: hidden;
     padding-bottom: 10px;
-}
-
-section:not(:first-child) {
-    padding-top: 50px;
 }
 
 #background {
@@ -96,11 +101,8 @@ section:not(:first-child) {
 }
 
 #about-section {
-    background-color: #DDDDDD;
-}
-
-#contact-section {
-    background-color: #AAAAAA;
+    position: relative;
+    background-color: #000000;
 }
 
 .section-full {
@@ -109,6 +111,14 @@ section:not(:first-child) {
 
 .section-half {
     height: 50vh;
+}
+
+.section-header {
+    width: 100%;
+    border-bottom: 1px solid #999999;
+    padding-bottom: 25px;
+    margin: 20px auto;
+    padding-top: 50px;
 }
 
 #logo {
@@ -152,12 +162,38 @@ section:not(:first-child) {
     cursor: pointer;
 }
 
-.coming-soon {
-    font-size: 2em;
-    font-style: italic;
-    text-align: center;
+#about-section {
+    display: inline-block;
 }
 
-#about-image {
-    width: 100%;
+#about-background {
+    position: absolute;
+    height: 100vh;
+    z-index: 1;
+}
+
+.about-contact-panel {
+    z-index: 2;
+}
+
+.about-contact-panel h2 {
+    padding-bottom: 20px;
+}
+
+.about-container > p {
+    font-style: italic;
+    color: #DDDDDD;
+}
+
+.about-container {
+    padding-bottom: 25px;
+    margin: 0 auto;
+    width: 75%;
+    border-bottom: 1px dashed #FFFFFF;
+}
+
+.contact-form-container {
+    padding-top: 25px;
+    width: 75%;
+    margin: 0 auto;
 }
