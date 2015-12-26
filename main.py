@@ -14,9 +14,14 @@ from constants import *
 
 class LandingPage(webapp2.RequestHandler):
     def get(self):
-        photos_query = Photo.query().order(-Photo.uploaded)
+        series_name = self.request.get('series_name')
+        if series_name:
+            photos_query = Photo.query(Photo.series.name == series_name).order(-Photo.uploaded)
+        else:
+            photos_query = Photo.query().order(-Photo.uploaded)
 
         template_values = {
+            'series_name': series_name,
             'all_series': get_all_series(),
             'photos': photos_query.fetch()
         }

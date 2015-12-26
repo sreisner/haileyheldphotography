@@ -45,3 +45,9 @@ function handleNavbarDisplay() {
 
     previousScrollPosition = currentScrollPosition;
 }
+
+function selectSeries() {
+    var gallerySelect = $(".gallery-select");
+    var seriesName = gallerySelect.val();
+    document.location.href = "/?series_name=" + seriesName + "#gallery-section";
+}

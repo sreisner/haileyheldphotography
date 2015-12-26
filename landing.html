@@ -92,10 +92,11 @@
       <div id="gallery">
         <div class="section-header">
           <div class="section-label">gallery</div>
-          <select class="form-control gallery-select">
+          <select class="form-control gallery-select" onchange="selectSeries()">
             <option value="all-photos">all photos</option>
             {% for series in all_series %}
-              <option value="{{ series.name }}">{{ series.name }}</option>
+              {% set selected = "selected" if series.name == series_name else "" %}
+              <option value="{{ series.name }}" {{ selected }}>{{ series.name }}</option>
             {% endfor %}
           </select>
         </div>
@@ -104,11 +105,11 @@
             <div class="col-sm-3 gallery-column">
               {% for photo in photos %}
                 {% if loop.index0 % 4 == i %}
-                  <div class="image-preview-container" data-photo-id="{{ photo.key.urlsafe() }}" data-caption="{{photo.caption}}" onclick="showImageModal(this)">
-                    <img src="/img?is_preview=true&img_id={{photo.key.urlsafe()}}" />
+                  <div class="image-preview-container" data-photo-id="{{ photo.key.urlsafe() }}" data-caption="{{ photo.caption }}" onclick="showImageModal(this)">
+                    <img src="/img?is_preview=true&img_id={{ photo.key.urlsafe() }}" />
                     <div class="image-preview-overlay-container">
                       <div class="image-preview-overlay-rectangle"></div>
-                      <p class="image-preview-overlay-caption">{{photo.caption}}</p>
+                      <p class="image-preview-overlay-caption">{{ photo.caption }}</p>
                     </div>
                   </div>
                 {% endif %}
@@ -130,7 +131,7 @@
         </div>
       </div>
     </section>
-    <section id="about-section" class="section-full" style="color: white">
+    <section id="about-section" class="section-full">
       <div class="about-contact-panel">
         <div class="about-container">
           <h2>about me</h2>
