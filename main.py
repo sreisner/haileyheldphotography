@@ -15,6 +15,8 @@ from constants import *
 class LandingPage(webapp2.RequestHandler):
     def get(self):
         series_name = self.request.get('series_name')
+        form_submit_message = self.request.get('form_submit_message')
+
         if series_name:
             photos_query = Photo.query(Photo.series.name == series_name).order(-Photo.uploaded)
         else:
@@ -22,12 +24,28 @@ class LandingPage(webapp2.RequestHandler):
 
         template_values = {
             'series_name': series_name,
+            'form_submit_message': form_submit_message,
             'all_series': get_all_series(),
             'photos': photos_query.fetch()
         }
         template = JINJA_ENVIRONMENT.get_template('landing.html')
         self.response.write(template.render(template_values))
 
+    def post(self):
+        name = cgi.escape(self.request.get('name'))
+        email = cgi.escape(self.request.get('email'))
+        comment = cgi.escape(self.request.get('comment'))
+        logging.warning("%s %s %s" % (name, email, comment))
+        if name and email and comment:
+            message = Message()
+            message.name = name
+            message.email = email
+            message.comment = comment
+            message.seen = False
+            message.put()
+            logging.warning("Message sent.")
+        query_params = urllib.urlencode({ 'form_submit_message': 'Message sent.  Thanks!' })
+        self.redirect("/?%s#about-section" % query_params)
 
 class Gallery(webapp2.RequestHandler):
     def get(self):
@@ -70,7 +88,7 @@ class About(webapp2.RequestHandler):
             message.comment = comment
             message.seen = False
             message.put()
-        query_params = urllib.urlencode({ 'thanks': 'Message sent.  Thanks!' })
+        query_params = urllib.urlencode({ 'form_submit_message': 'Message sent.  Thanks!' })
         self.redirect("/about?%s" % query_params)
 
 

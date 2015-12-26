@@ -17,3 +17,8 @@
 .new {
     font-weight: bold;
 }
+
+.modal-body {
+    overflow-y: scroll;
+    word-wrap: break-word;
+}
