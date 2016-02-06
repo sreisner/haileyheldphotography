@@ -11,6 +11,7 @@ var jimp = require('jimp');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
 var handlebars = require('express-handlebars');
 
 var app = express();
@@ -26,7 +27,12 @@ app.use('/', express.static(path.join(__dirname, 'static')));
 app.use('/admin', express.static(path.join(__dirname, 'static')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
-app.use(session({ secret: 'anything' }));
+app.use(session({
+    secret: 'anything',
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection
+    })
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
