@@ -1,0 +1,9 @@
+@font-face {
+    font-family: Halion;
+    src: url("../fonts/Halion.otf") format("opentype");
+}
+
+body {
+    font-family: 'Halion', sans-serif;
+    background-color: #FFFFFF;
+}

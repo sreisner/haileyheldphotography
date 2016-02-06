@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <!-- JQuery -->
+        <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+        <!-- Bootstrap -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="css/site.css">
+        <link rel="stylesheet" href="css/gallery.css">
+        <link rel="stylesheet" href="css/upload.css">
+
+        <!-- Custom Javascript -->
+        <script src="js/api.js"></script>
+        <script src="js/upload.js"></script>
+    </head>
+    <body onload="onload()">
+        <div class="page-header h2">upload</div>
+        <form action="/api/photo" method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-xs-9">
+                    <div class="form-group">
+                        <label for="picture">image</label>
+                        <input type="file" name="image_data">
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="form-group">
+                        <label for="series">series</label>
+                        <select class="gallery-select form-control" name="series_id"></select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="caption">caption</label>
+                        <input class="form-control" type="text" name="caption" id="caption">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-9">
+                    <button type="submit" name="submit" class="btn btn-default">upload</button>
+                </div>
+            </div>
+        </form>
+        <div class="alert alert-dismissable" role="alert" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="alert-message"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name" : "hailey-held-photography",
+  "version" : "0.0.0",
+  "description" : "Hailey Held's Photography Portfolio",
+  "main" : "server.js",
+  "author" : "Shawn Reisner <shawn.reisner@gmail.com>",
+  "dependencies" : {
+    "express" : "~4.7.2",
+    "mongoose" : "~3.6.2",
+    "morgan" : "~1.2.2",
+    "multer" : "~1.1.0",
+    "read-chunk" : "~1.0.1",
+    "image-type" : "~2.1.0",
+    "body-parser" : "~1.14.2",
+    "jimp" : "~0.2.21",
+    "passport" : "~0.3.2",
+    "passport-facebook" : "~2.1.0",
+    "express-session" : "~1.13.0",
+    "cookie-parser" : "~1.4.1",
+    "express-handlebars" : "~3.0.0"
+  }
+}

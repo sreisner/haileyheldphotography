@@ -1,0 +1,87 @@
+.name {
+    letter-spacing: 1px;
+    padding-right: 10px;
+}
+
+.photography-label {
+    padding-left: 10px;
+    font-style: italic;
+    letter-spacing: 10px;
+    font-size: 0.8em;
+}
+
+/* xxxs devices and below*/
+@media (max-width : 380px) {
+    .navbar-brand {
+        font-size: 0.75em;
+    }
+}
+
+/* xxs devices only */
+@media (min-width : 380px) and (max-width : 519px) {
+    .navbar-brand {
+        font-size: 1em;
+    }
+}
+
+@media (max-width : 519px) {
+    .photography-label {
+        letter-spacing: 5px;
+    }
+}
+
+/* xs devices and below */
+@media (max-width : 767px) {
+    /* Navbar collapses at this point */
+    .navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
+        text-decoration: underline;
+    }
+}
+
+/* sm devices */
+@media (min-width : 768px) and (max-width : 991px) {
+    .navbar-brand {
+        font-size: 1.2em;
+    }
+}
+
+/* md devices and above */
+@media (min-width : 992px) {
+    .navbar-brand {
+        font-size: 1.5em;
+    }
+}
+
+.navbar-icon {
+    margin-right: 15px;
+}
+
+.series-link:hover {
+    cursor: pointer;
+}
+
+.social-links {
+    display: inline-flex !important;
+}
+
+.navbar-default {
+    box-shadow: none;
+    background-image: none;
+    background-color: #FFFFFF;
+}
+
+.navbar-default .navbar-brand {
+    color: #000000;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.open>a {
+    box-shadow: none;
+    background-image: none;
+    background-color: #FFFFFF;
+}
+
+#navbar-series > ul > li.active > a, #navbar-series > ul > li:hover > a {
+    background-color: #666666;
+    color: #FFFFFF;
+    background-image: none;
+}

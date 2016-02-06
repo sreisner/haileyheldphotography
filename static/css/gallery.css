@@ -1,0 +1,59 @@
+.gallery-column {
+    padding: 2.5px;
+}
+
+.image-preview-container {
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.image-preview-container > img {
+    width: 100%;
+}
+
+.image-preview-overlay-container {
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+.image-preview-overlay-container:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+.image-preview-overlay-rectangle {
+    background-color: #FFFFFF;
+    opacity: 0.1;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.image-preview-overlay-caption {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    font-size: 1.5em;
+    color: #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    height: 2em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.modal-content {
+    border-radius: 0px;
+}
+
+.modal-body {
+    padding: 0px;
+}
+
+.modal-body > img {
+    width: 100%;
+}

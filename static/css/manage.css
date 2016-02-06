@@ -1,0 +1,11 @@
+.selected {
+    opacity: 1;
+}
+
+.image-preview-overlay-caption {
+    font-size: 1em;
+}
+
+.gallery {
+    margin-top: 10px;
+}

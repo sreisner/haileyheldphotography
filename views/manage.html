@@ -1,0 +1,57 @@
+<html>
+<head>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/site.css">
+    <link rel="stylesheet" href="css/gallery.css">
+    <link rel="stylesheet" href="css/manage.css">
+
+    <!-- Custom Javascript -->
+    <script src="js/api.js"></script>
+    <script src="js/manage.js"></script>
+</head>
+<body onload="onload()">
+    <div class="page-header h2">manage</div>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="row preview-series-row">
+                <div class="col-xs-3">
+                    <select id="preview-series" class="gallery-select form-control" onchange="onPreviewSeriesChange()"></select>
+                </div>
+            </div>
+            <div class="gallery container-fluid">
+                <div class="col-sm-6 col-md-3 gallery-column"></div>
+                <div class="col-sm-6 col-md-3 gallery-column"></div>
+                <div class="col-sm-6 col-md-3 gallery-column"></div>
+                <div class="col-sm-6 col-md-3 gallery-column"></div>
+            </div>
+        </div>
+        <div id="manage-form" class="col-xs-4" style="display: none;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="series">series</label>
+                    <select id="edit-series" class="gallery-select form-control"></select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <label for="caption">caption</label>
+                    <input id="edit-caption" class="form-control" type="text" name="caption">
+                </div>
+            </div>
+            <div class="row text-right edit-buttons-row">
+                <div class="col-xs-12">
+                    <button type="button" class="btn btn-danger" id="delete-image-button" onclick="deleteClick()">delete</button>
+                    <button type="button" class="btn btn-primary" id="save-image-button" onclick="updateClick()">update</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
