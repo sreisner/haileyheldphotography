@@ -336,5 +336,6 @@ app.get('/admin/logout', function(request, response) {
     response.redirect('/');
 });
 
-app.listen(process.env.PORT || 5000);
-console.log('App listening on port 8080');
+var port = process.env.PORT || 5000
+app.listen(port);
+console.log('App listening on port ' + port);
