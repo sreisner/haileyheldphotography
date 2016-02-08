@@ -1,0 +1,22 @@
+body {
+    background-color: #FFFFFF;
+    padding-top: 70px;
+}
+
+#profile-image {
+    width: 100%;
+}
+
+.series-link:hover {
+    cursor: pointer;
+}
+
+.social-links, .series-links {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-body > img {
+    width: 100%;
+}
