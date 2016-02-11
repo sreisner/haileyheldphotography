@@ -18,7 +18,7 @@ function createSeriesList(series) {
 }
 
 function populateGallery(images) {
-    if(series.error) {
+    if(images.error) {
         alert('Error retrieving data from server.');
         return;
     }
