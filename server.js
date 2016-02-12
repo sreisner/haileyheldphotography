@@ -63,7 +63,8 @@ var Message = mongoose.model('Message', {
 passport.use(new FacebookStrategy({
         clientID: '599565840191514',
         clientSecret: '5b3e6a35d3c6852f705850236bae5cf5',
-        callbackURL: 'http://www.haileyheld.com/auth/facebook/callback',
+        // callbackURL: 'http://www.haileyheld.com/auth/facebook/callback',
+        callbackURL: 'http://test.yourdomain.com:5000/auth/facebook/callback',
         profileFields: ['id', 'name', 'emails']
     }, function(accessToken, refreshToken, profile, done) {
         done(null, profile);

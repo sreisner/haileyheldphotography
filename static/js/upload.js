@@ -5,6 +5,7 @@ function onload() {
         if(!validateUploadForm($(this))) {
             return false;
         }
+        var inputs = $(this).find('input');
         $.ajax({
             data: new FormData(this),
             type: $(this).attr('method'),
@@ -24,8 +25,14 @@ function onload() {
                     $('.alert').slideUp('slow');
                 }, 3000);
                 $('form').trigger('reset');
+            },
+            complete: function() {
+                $('#loading-icon').hide();
+                inputs.removeAttr('disabled');
             }
         });
+        $('#loading-icon').show();
+        inputs.attr('disabled', '');
         return false;
     });
 }
