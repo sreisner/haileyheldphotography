@@ -13,6 +13,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var handlebars = require('express-handlebars');
+var Grid = require('gridfs-stream');
+var uuid = require('uuid');
 
 var app = express();
 
@@ -22,6 +24,8 @@ app.set('view engine', '.hbs');
 var SUPPORTED_IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
 mongoose.connect('mongodb://104.197.136.32:27017/hailey');
+Grid.mongo = mongoose.mongo;
+var gfs = Grid(mongoose.connection.db);
 
 app.use('/', express.static(path.join(__dirname, 'static')));
 app.use('/admin', express.static(path.join(__dirname, 'static')));
@@ -43,7 +47,9 @@ var Series = mongoose.model('Series', {
 
 var Photo = mongoose.model('Photo', {
     caption : String,
-    img_path : String,
+    data: String,
+    gfs_id: String,
+    gfs_preview_id: String,
     date_uploaded : Date,
     mime_type : String,
     series : {
@@ -107,22 +113,17 @@ app.get('/api/photo/:photo_id', function(request, response) {
             return;
         }
 
-        var path;
-        if(request.query.preview) {
-            path = photo.img_path + '-min.jpg';
-        } else {
-            path = photo.img_path;
-        }
-        fs.readFile(path, function(err, data) {
-            if(err) {
-                response.json({
-                    'error' : err
-                });
-                return;
-            }
-            response.writeHead(200, {'Content-Type': photo.mime_type });
-            response.end(data, 'binary');
+        var gfs_id = request.query.preview ? photo.gfs_preview_id : photo.gfs_id;
+
+        var readStream = gfs.createReadStream({
+            _id: gfs_id
         });
+        response.writeHead(200, {'Content-Type': photo.mime_type });
+        readStream.pipe(response);
+        readStream.on('close', function() {
+            response.end();
+        });
+
     });
 });
 
@@ -133,7 +134,6 @@ app.post('/api/photo', upload.single('image_data'), function(request, response) 
     }
     var photo = new Photo();
     photo.caption = request.body.caption;
-    photo.img_path = request.file.path,
     photo.date_uploaded = new Date();
     photo.series = request.body.series_id;
     if(SUPPORTED_IMAGE_MIME_TYPES.indexOf(request.file.mimetype) == -1) {
@@ -143,26 +143,49 @@ app.post('/api/photo', upload.single('image_data'), function(request, response) 
         return;
     }
     photo.mime_type = request.file.mimetype;
-    photo.save(function(err, insertedPhoto, numAffected) {
-        if(err) {
-            response.json({
-                'error' : err
-            });
-            return;
-        }
-        response.json({
-            'photo': insertedPhoto
-        });
+    var readStream = fs.createReadStream(request.file.path);
+    var gridFilename = uuid.v1();
+    var writeStream = gfs.createWriteStream({
+        filename: gridFilename
     });
 
-    jimp.read(request.file.path).then(function(src) {
-        src.resize(500, jimp.AUTO)
-           .quality(90)
-           .write(request.file.path + '-min.jpg');
-    }).catch(function(err) {
-        console.log(err);
-        fs.createReadStream(request.file.path)
-            .pipe(fs.createWriteStream(request.file.path + '-min.jpg'));
+    readStream.pipe(writeStream);
+    writeStream.on('close', function(file) {
+        photo.gfs_id = file._id;
+        jimp.read(request.file.path).then(function(src) {
+            src.resize(500, jimp.AUTO)
+               .quality(90)
+               .write(request.file.path + '-min.jpg', function(err) {
+                   if(err) {
+                       response.json({
+                           'error' : err
+                       });
+                       return;
+                   }
+                   var previewWriteStream = gfs.createWriteStream({
+                       filename: gridFilename + '-min'
+                   });
+                   fs.createReadStream(request.file.path + '-min.jpg').pipe(previewWriteStream);
+                   previewWriteStream.on('close', function(file) {
+                       photo.gfs_preview_id = file._id;
+                       photo.save(function(err, insertedPhoto, numAffected) {
+                           if(err) {
+                               response.json({
+                                   'error' : err
+                               });
+                               return;
+                           }
+                           response.json({
+                               'photo': insertedPhoto
+                           });
+                       });
+                   });
+               });
+        }).catch(function(err) {
+            response.json({
+                'error': err
+            });
+        });
     });
 });
 
