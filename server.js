@@ -23,7 +23,7 @@ app.set('view engine', '.hbs');
 
 var SUPPORTED_IMAGE_MIME_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
-mongoose.connect('mongodb://104.197.136.32:27017/hailey');
+mongoose.connect('mongodb://localhost:27017/hailey');
 Grid.mongo = mongoose.mongo;
 var gfs = Grid(mongoose.connection.db);
 
@@ -359,6 +359,6 @@ app.get('/admin/logout', function(request, response) {
     response.redirect('/');
 });
 
-var port = process.env.PORT || 5000
+var port = 5000;
 app.listen(port);
 console.log('App listening on port ' + port);
