@@ -126,12 +126,13 @@ function clearGallery() {
 function populateGallery(images) {
     var galleryColumns = $('.gallery-column');
     for(var i = 0; i < images.length; i++) {
+        var caption = images[i].caption.split('"').join("&quot;");
         $(galleryColumns[i % galleryColumns.length]).append([
-            '<div class="image-preview-container" data-photo-id="' + images[i]._id + '" data-caption="' + images[i].caption + '" data-uploaded="' + images[i].date_uploaded + '" onclick="showImageModal(this)">',
+            '<div class="image-preview-container" data-photo-id="' + images[i]._id + '" data-caption="' + caption + '" data-uploaded="' + images[i].date_uploaded + '" onclick="showImageModal(this)">',
                 '<img src="/api/photo/' + images[i]._id + '?preview=true" />',
                 '<div class="image-preview-overlay-container">',
                     '<div class="image-preview-overlay-rectangle"></div>',
-                    '<p class="image-preview-overlay-caption">' + images[i].caption + '</p>',
+                    '<p class="image-preview-overlay-caption">' + caption + '</p>',
                 '</div>',
             '</div>'
         ].join(''));
