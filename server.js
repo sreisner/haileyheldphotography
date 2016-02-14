@@ -267,12 +267,14 @@ app.post('/api/message', function(request, response) {
     message.email = request.body.email;
     message.comment = request.body.comment;
     message.save(function(err) {
-        response.json({
-            'error' : err
-        });
-        return;
+        if(err) {
+            response.json({
+                'error' : err
+            });
+            return;
+        }
+        response.json({});
     });
-    response.json({});
 });
 
 app.put('/api/message/:message_id', function(request, response) {
