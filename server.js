@@ -175,8 +175,12 @@ app.post('/api/photo', upload.single('image_data'), function(request, response) 
                                });
                                return;
                            }
-                           response.json({
-                               'photo': insertedPhoto
+                           fs.unlink(request.file.path, function() {
+                               fs.unlink(request.file.path + '-min.jpg', function() {
+                                   response.json({
+                                       'photo': insertedPhoto
+                                   });
+                               });
                            });
                        });
                    });
@@ -221,11 +225,14 @@ app.delete('/api/photo/:photo_id', function(request, response) {
         if(err) {
             return;
         }
-        fs.unlink(photo.img_path, function() {
-            Photo.remove({
-                _id : request.params.photo_id
-            }, function(err) {
-                response.json({});
+
+        gfs.remove({ _id: photo.gfs_id }, function() {
+            gfs.remove({ _id: photo.gfs_preview_id }, function() {
+                Photo.remove({
+                    _id : request.params.photo_id
+                }, function(err) {
+                    response.json({});
+                });
             });
         });
     });
