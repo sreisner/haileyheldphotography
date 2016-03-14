@@ -27,6 +27,8 @@ mongoose.connect('mongodb://localhost:27017/hailey');
 Grid.mongo = mongoose.mongo;
 var gfs = Grid(mongoose.connection.db);
 
+var testing = process.argv[3];
+
 app.use('/', express.static(path.join(__dirname, 'static')));
 app.use('/admin', express.static(path.join(__dirname, 'static')));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -128,7 +130,7 @@ app.get('/api/photo/:photo_id', function(request, response) {
 });
 
 app.post('/api/photo', upload.single('image_data'), function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -194,7 +196,7 @@ app.post('/api/photo', upload.single('image_data'), function(request, response) 
 });
 
 app.put('/api/photo/:photo_id', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -215,7 +217,7 @@ app.put('/api/photo/:photo_id', function(request, response) {
 });
 
 app.delete('/api/photo/:photo_id', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -251,7 +253,7 @@ app.get('/api/series', function(request, response) {
 });
 
 app.get('/api/message', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -285,7 +287,7 @@ app.post('/api/message', function(request, response) {
 });
 
 app.put('/api/message/:message_id', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -305,7 +307,7 @@ app.put('/api/message/:message_id', function(request, response) {
 });
 
 app.delete('/api/message/:message_id', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -325,9 +327,12 @@ app.get('/', function(request, response) {
 });
 
 app.get('/admin', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
+    }
+    if(testing) {
+        request.user = { name: { givenName: 'TESTER' } };
     }
     response.render('admin', { user: request.user.name.givenName });
 });
@@ -340,7 +345,7 @@ app.get('/auth/facebook/callback',
         failureRedirect: '/' }));
 
 app.get('/admin/upload', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -348,7 +353,7 @@ app.get('/admin/upload', function(request, response) {
 });
 
 app.get('/admin/manage', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -356,7 +361,7 @@ app.get('/admin/manage', function(request, response) {
 });
 
 app.get('/admin/messages', function(request, response) {
-    if(!request.user) {
+    if(!request.user && !testing) {
         response.redirect('/login');
         return;
     }
@@ -371,3 +376,6 @@ app.get('/admin/logout', function(request, response) {
 var port = 5000;
 app.listen(port);
 console.log('App listening on port ' + port);
+if(testing) {
+    console.log('APP RUNNING IN LOCAL TESTING MODE');
+}
