@@ -34,10 +34,9 @@
     }
 
     .about-contact-panel {
-        position: absolute;
+        position: relative;
         width: 40%;
         top: 50%;
-        transform: translateY(-50%);
     }
 
     #about-background {
