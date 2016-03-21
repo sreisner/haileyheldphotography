@@ -41,6 +41,8 @@
 
     #about-background {
         left: 30%;
+        min-height: 100%;
+        position: relative;
     }
 }
 
